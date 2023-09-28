@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@200;300;400;500;600;700;800&display=swap');
 
 /*! RESET CSS  */
 html,
@@ -134,5 +134,68 @@ table {
 
 /*! Custom Style */
 body {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Martian Mono', monospace;
+    background-color: rgb(229, 229, 229);
 }
+
+/*! Style Header  */
+
+header {
+    width: 100vw;
+    /* background-color: rgb(151, 151, 151); */
+    border-bottom: 1px solid rgb(204, 204, 204);
+    box-shadow: 0 0px 5px 1px rgb(175, 175, 175);
+}
+
+.header-container {
+    width: 80vw;
+    padding-block: 10px;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container a {
+    text-decoration: none;
+    color: black;
+}
+
+.header-container h1 {
+    font-size: 17pt;
+    font-weight: 300;
+}
+
+.header-container h1 span {
+    font-weight: 800;
+
+}
+
+.header-container ul {
+    width: 43vw;
+    display: flex;
+    justify-content: space-around;
+}
+
+.header-container ul li {
+    padding: 10px;
+    font-weight: 500;
+    font-size: 11pt;
+}
+
+.header-container ul li:hover {
+    border-bottom: 1px solid black;
+    transition: .3s ease;
+}
+
+/* end style header  */
+
+
+/*! style main  */
+
+
+
+/* end style main */
+
+/*! style footer  */
+/* end style footer */

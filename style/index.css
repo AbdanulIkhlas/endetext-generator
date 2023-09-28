@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@200;300;400;500;600;700;800&family=Roboto:ital,wght@0,300;0,500;1,300;1,500&display=swap');
 
 /*! RESET CSS  */
 html,
@@ -193,7 +193,71 @@ header {
 
 /*! style main  */
 
+main {
+    width: 80vw;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    padding: 20px;
+    margin-inline: auto;
+    font-family: 'Roboto', sans-serif;
+}
 
+.important-text {
+    font-weight: 600;
+    font-style: italic;
+}
+
+.center-text {
+    text-align: center;
+    font-size: 14pt;
+    font-weight: 600;
+}
+
+main section {
+    margin-bottom: 20px;
+}
+
+/* tentang web */
+main section:nth-child(1) {
+    box-shadow: 0 0px 5px 1px rgb(175, 175, 175);
+    font-size: 14pt;
+    padding: 6px 10px;
+    border-left: 5px solid rgb(136, 136, 136);
+    margin-bottom: 30px;
+}
+
+/* section penjelasan algoritma */
+main section:nth-child(2) {
+    padding: 10px;
+}
+
+.judul-algoritma {
+    font-family: 'Martian Mono', monospace;
+    font-size: 20pt;
+    font-weight: 500;
+    padding-block: 20px;
+
+}
+
+.algoritma {
+    box-shadow: 0 0px 5px 1px rgb(99, 99, 99);
+    border-radius: 5px;
+    width: 70vw;
+    margin-inline: auto;
+    padding: 10px;
+}
+
+.algoritma button a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+
+.algoritma button {
+    margin-top: 20px;
+    background-color: rgb(68, 113, 0);
+    padding: 5px;
+}
 
 /* end style main */
 

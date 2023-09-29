@@ -14,11 +14,11 @@
         <div class="header-container">
             <h1><a href="index.html"><span>ENDETEXT</span>GENERATOR</a></h1>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">Chaesar Chipper</a></li>
-                <li><a href="#">XOR</a></li>
-                <li><a href="#">Vignere</a></li>
-                <li><a href="#">Super Enkripsi</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="caesar.php">Chaesar Chipper</a></li>
+                <li><a href="xor.php">XOR</a></li>
+                <li><a href="vignere.php">Vignere</a></li>
+                <li><a href="superEnkripsi.php">Super Enkripsi</a></li>
             </ul>
         </div>
     </header>
@@ -53,7 +53,7 @@
                         totam qui sed odit delectus. Impedit dolores neque deleniti sit deserunt eligendi illum, ducimus
                         iusto autem necessitatibus! et nihil, velit, dolorum repudiandae. Repellat, molestiae vitae!
                     </div>
-                    <button><a href="#">Caesar Chipper</a></button>
+                    <button><a href="caesar.php">Caesar Chipper</a></button>
                 </div>
             </div>
             <br><br>
@@ -75,7 +75,7 @@
                         elit.Asperiores ut vero neque porro soluta corporis quidem quia reiciendis, incidunt
                         praesentium quam dolorem et nihil, velit, dolorum repudiandae. Repellat, molestiae vitae!
                     </div>
-                    <button><a href="#">XOR</a></button>
+                    <button><a href="xor.php">XOR</a></button>
                 </div>
             </div>
             <br><br>
@@ -97,7 +97,7 @@
                         elit.Asperiores ut vero neque porro soluta corporis quidem quia reiciendis, incidunt
                         praesentium quam dolorem et nihil, velit, dolorum repudiandae. Repellat, molestiae vitae!
                     </div>
-                    <button><a href="#">Vignere</a></button>
+                    <button><a href="vignere.php">Vignere</a></button>
                 </div>
             </div>
             <br><br>
@@ -119,7 +119,7 @@
                         elit.Asperiores ut vero neque porro soluta corporis quidem quia reiciendis, incidunt
                         praesentium quam dolorem et nihil, velit, dolorum repudiandae. Repellat, molestiae vitae!
                     </div>
-                    <button><a href="#">Super Enkripsi</a></button>
+                    <button><a href="superEnkripsi.php">Super Enkripsi</a></button>
                 </div>
             </div>
         </section>

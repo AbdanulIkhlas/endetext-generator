@@ -172,7 +172,7 @@ header {
 }
 
 .header-container ul {
-    width: 43vw;
+    width: 45vw;
     display: flex;
     justify-content: space-around;
 }
@@ -180,7 +180,7 @@ header {
 .header-container ul li {
     padding: 10px;
     font-weight: 500;
-    font-size: 11pt;
+    font-size: 10.5pt;
 }
 
 .header-container ul li:hover {
@@ -195,8 +195,6 @@ header {
 
 main {
     width: 80vw;
-    border-right: 1px solid black;
-    border-left: 1px solid black;
     padding: 20px;
     margin-inline: auto;
     font-family: 'Roboto', sans-serif;
@@ -209,21 +207,23 @@ main {
 
 .center-text {
     text-align: center;
-    font-size: 14pt;
+    font-size: 16pt;
     font-weight: 600;
 }
 
 main section {
     margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
 /* tentang web */
 main section:nth-child(1) {
     box-shadow: 0 0px 5px 1px rgb(175, 175, 175);
     font-size: 14pt;
-    padding: 6px 10px;
+    width: 70vw;
+    padding: 20px;
     border-left: 5px solid rgb(136, 136, 136);
-    margin-bottom: 30px;
+    margin: 30px auto;
 }
 
 /* section penjelasan algoritma */
@@ -236,15 +236,48 @@ main section:nth-child(2) {
     font-size: 20pt;
     font-weight: 500;
     padding-block: 20px;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: pointer;
+}
 
+.judul-algoritma div {
+    box-sizing: border-box;
+    margin-right: 20px;
 }
 
 .algoritma {
-    box-shadow: 0 0px 5px 1px rgb(99, 99, 99);
+    box-shadow: 0 3px 5px 1px rgb(99, 99, 99);
     border-radius: 5px;
     width: 70vw;
     margin-inline: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.algoritma .content {
+    display: none;
+    width: 90%;
+    margin-inline: auto;
+    text-align: center;
     padding: 10px;
+    box-sizing: border-box;
+    transition: display 5s;
+}
+
+/* Mengubah tampilan div yang aktif menjadi block */
+.algoritma.active .content {
+    display: block;
+}
+
+.algoritma .content div {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15pt;
+    font-weight: 500;
+    text-align: justify;
+    line-height: 25px;
+    border: 1px solid black;
 }
 
 .algoritma button a {
@@ -254,9 +287,10 @@ main section:nth-child(2) {
 }
 
 .algoritma button {
-    margin-top: 20px;
+    margin-top: 40px;
+    border-radius: 8px;
     background-color: rgb(68, 113, 0);
-    padding: 5px;
+    padding: 8px 10px;
 }
 
 /* end style main */

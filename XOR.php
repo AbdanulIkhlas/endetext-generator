@@ -44,7 +44,7 @@
                 $keyChar = chr($_POST["key-decimal"]);
             }
 
-            // RUMUS C = (P+K) mod 26 ; P = (C-K) mod 26 
+            // RUMUS C = P XOR K ; P = C XOR K
             $resultChar = chr(ord($char) ^ ord($keyChar));
             // operasi XOR dalam bentuk ASCII dan diubah kembali menjadi karakter
             

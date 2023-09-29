@@ -75,7 +75,7 @@
                         elit.Asperiores ut vero neque porro soluta corporis quidem quia reiciendis, incidunt
                         praesentium quam dolorem et nihil, velit, dolorum repudiandae. Repellat, molestiae vitae!
                     </div>
-                    <button><a href="#">Caesar Chipper</a></button>
+                    <button><a href="#">XOR</a></button>
                 </div>
             </div>
             <br><br>
@@ -97,7 +97,7 @@
                         elit.Asperiores ut vero neque porro soluta corporis quidem quia reiciendis, incidunt
                         praesentium quam dolorem et nihil, velit, dolorum repudiandae. Repellat, molestiae vitae!
                     </div>
-                    <button><a href="#">Caesar Chipper</a></button>
+                    <button><a href="#">Vignere</a></button>
                 </div>
             </div>
             <br><br>
@@ -119,7 +119,7 @@
                         elit.Asperiores ut vero neque porro soluta corporis quidem quia reiciendis, incidunt
                         praesentium quam dolorem et nihil, velit, dolorum repudiandae. Repellat, molestiae vitae!
                     </div>
-                    <button><a href="#">Caesar Chipper</a></button>
+                    <button><a href="#">Super Enkripsi</a></button>
                 </div>
             </div>
         </section>

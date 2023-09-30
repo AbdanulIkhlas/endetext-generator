@@ -160,7 +160,7 @@ function caesarCipher($text, $shift, $action) {
             </table>
         </div>
     </footer>
-    <script src="script/caesar.js"></script>
+    <script src="script/interactive.js"></script>
 </body>
 
 </html>

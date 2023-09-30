@@ -66,29 +66,6 @@
     }
     ?>
 
-    <form method="post" action="">
-        <div class="btn-group mb-4" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="action" id="action1" autocomplete="off" value="enkripsi"
-                <?php if (isset($_POST['action']) && $_POST['action'] == 'enkripsi') echo 'checked'; ?>>
-            <label class="btn btn-outline-secondary" for="action1">Enkripsi</label>
-            <input type="radio" class="btn-check" name="action" id="action2" autocomplete="off" value="deskripsi"
-                <?php if (isset($_POST['action']) && $_POST['action'] == 'deskripsi') echo 'checked'; ?>>
-            <label class="btn btn-outline-secondary" for="action2">Deskripsi</label>
-        </div>
-        <div class="mb-4">
-            <label for="textInput" class="form-label">Plaintext : </label>
-            <textarea name="textInput" class="form-control" id="textInput" rows="3"
-                required><?php if (isset($_POST['textInput'])) echo htmlspecialchars($_POST['textInput']); ?></textarea>
-        </div>
-        <div class="input-group mb-4">
-            <span class="input-group-text" id="basic-addon1">Key</span>
-            <input type="number" name="shift" class="form-control" aria-label="Username" aria-describedby="basic-addon1"
-                min="1" max="25" required
-                value="<?php if (isset($_POST['shift'])) echo htmlspecialchars($_POST['shift']); ?>">
-        </div>
-        <div align="center" class="mb-4">
-            <button type="submit">Enkripsi</button>
-        </div>
     </form>
 
 

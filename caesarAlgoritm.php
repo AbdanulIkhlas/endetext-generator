@@ -81,24 +81,24 @@ function caesarCipher($text, $shift, $action) {
                     <label class="btn btn-outline-secondary" for="action2">Deskripsi</label>
                 </div>
                 <div class="mb-4">
-                    <label for="textInput" class="form-label">Plaintext : </label>
+                    <label for="textInput" class="form-label">Pesan : </label>
                     <textarea name="textInput" class="form-control" id="textInput" rows="3"
                         required><?php if (isset($_POST['textInput'])) echo htmlspecialchars($_POST['textInput']); ?></textarea>
                 </div>
                 <div class="input-group mb-4">
 
-                    <span class="input-group-text" id="basic-addon1">Key</span>
+                    <span class="input-group-text" id="basic-addon1">Key / Shift</span>
                     <input type="number" name="shift" class="form-control" aria-label="Username"
                         aria-describedby="basic-addon1" min="1" max="25"
                         value="<?php if (isset($_POST['shift'])) echo htmlspecialchars($_POST['shift']); ?>" required>
                 </div>
-                <div align="center" class="mb-4">
+                <div align="center" class="mb-3">
                     <button type="submit">Enkripsi</button>
                 </div>
             </form>
 
             <div class="mb-4">
-                <label for="hasil" class="form-label">Chipper Text : </label>
+                <label for="hasil" class="form-label">Hasil : </label>
                 <div class="hasil">
                     <?php 
                     if ($_SERVER["REQUEST_METHOD"] == "POST") {

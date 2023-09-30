@@ -124,7 +124,25 @@
             </div>
         </section>
     </main>
-    <footer></footer>
+    <footer>
+        <div>&copy;2023 ENDETEXTGENERATOR</div>
+        <div class="anggota-kelompok">
+            <table>
+                <tr>
+                    <td>Muhammad Abdanul Ikhlas</td>
+                    <td>132210009</td>
+                </tr>
+                <tr>
+                    <td>Muhammad Harish Wijaya</td>
+                    <td>132210011</td>
+                </tr>
+                <tr>
+                    <td>Ignasius Satria Wicaksana</td>
+                    <td>132210020</td>
+                </tr>
+            </table>
+        </div>
+    </footer>
     <script src="script/index.js"></script>
 </body>
 

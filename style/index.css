@@ -141,7 +141,7 @@ body {
 /*! Style Header  */
 
 header {
-    width: 100vw;
+    width: 100%;
     /* background-color: rgb(151, 151, 151); */
     border-bottom: 1px solid rgb(204, 204, 204);
     box-shadow: 0 0px 5px 1px rgb(175, 175, 175);
@@ -198,6 +198,7 @@ header {
 main {
     width: 80vw;
     padding: 20px;
+    margin-bottom: 50px;
     margin-inline: auto;
     font-family: 'Roboto', sans-serif;
 }
@@ -235,9 +236,9 @@ main section:nth-child(2) {
 
 .judul-algoritma {
     font-family: 'Martian Mono', monospace;
-    font-size: 20pt;
+    font-size: 16pt;
     font-weight: 500;
-    padding-block: 20px;
+    padding: 20px 20px 10px;
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
@@ -254,7 +255,7 @@ main section:nth-child(2) {
     border-radius: 5px;
     width: 70vw;
     margin-inline: auto;
-    padding: 20px;
+    padding: 20px 10px;
     box-sizing: border-box;
 }
 
@@ -297,4 +298,36 @@ main section:nth-child(2) {
 /* end style main */
 
 /*! style footer  */
+footer {
+    width: 100%;
+    padding: 30px;
+    color: white;
+    background-color: rgb(77, 77, 77);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid rgb(104, 104, 104);
+    box-shadow: 0px -1px 2px 1px rgb(136, 136, 136);
+}
+
+footer div:nth-child(1) {
+    padding-bottom: 30px;
+    width: 30vw;
+    text-align: center;
+    border-bottom: 1px solid rgb(206, 206, 206);
+    margin-bottom: 20px;
+}
+
+footer .anggota-kelompok {
+    display: flex;
+    justify-content: center;
+}
+
+footer .anggota-kelompok table td {
+    padding: 10px;
+}
+
+
+
 /* end style footer */

@@ -49,9 +49,10 @@
                 </div>
                 <div class="content">
                     <div>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis repudiandae aut eum aperiam
-                        totam qui sed odit delectus. Impedit dolores neque deleniti sit deserunt eligendi illum, ducimus
-                        iusto autem necessitatibus! et nihil, velit, dolorum repudiandae. Repellat, molestiae vitae!
+                        Caesar Cipher, juga dikenal sebagai Caesar Shift atau Shift Cipher, adalah jenis enkripsi
+                        sederhana yang digunakan untuk mengenkripsi pesan dengan menggeser setiap huruf dalam teks asli
+                        sejumlah tetap yang ditentukan. Teknik ini dinamai sesuai dengan Julius Caesar, seorang jenderal
+                        Romawi kuno, yang dikatakan menggunakannya untuk mengamankan komunikasi militer.
                     </div>
                     <button><a href="caesar.php">Caesar Chipper</a></button>
                 </div>
@@ -70,10 +71,11 @@
                 </div>
                 <div class="content">
                     <div>
-                        Lorem ipsum dolor sit amet consectetur
-                        adipisicing
-                        elit.Asperiores ut vero neque porro soluta corporis quidem quia reiciendis, incidunt
-                        praesentium quam dolorem et nihil, velit, dolorum repudiandae. Repellat, molestiae vitae!
+                        XOR Cipher (Xclusive OR Cipher), adalah jenis enkripsi
+                        sederhana yang menggunakan operasi XOR (Xclusive OR) untuk mengenkripsi dan mendekripsi pesan.
+                        XOR adalah operasi logika yang menghasilkan keluaran "true" (1) hanya jika ada jumlah ganjil
+                        dari input yang berisi "true" (1). Dalam konteks enkripsi, XOR digunakan untuk menggabungkan
+                        pesan dengan kunci, dan hasilnya adalah pesan terenkripsi.
                     </div>
                     <button><a href="xor.php">XOR</a></button>
                 </div>
@@ -92,10 +94,10 @@
                 </div>
                 <div class="content">
                     <div>
-                        Lorem ipsum dolor sit amet consectetur
-                        adipisicing
-                        elit.Asperiores ut vero neque porro soluta corporis quidem quia reiciendis, incidunt
-                        praesentium quam dolorem et nihil, velit, dolorum repudiandae. Repellat, molestiae vitae!
+                        Vigenère Cipher adalah jenis enkripsi yang lebih kuat daripada Caesar Cipher. Ia mengenkripsi
+                        pesan dengan menggunakan kunci yang terdiri dari beberapa karakter, bukan hanya satu pergeseran
+                        tunggal seperti dalam Caesar Cipher. Nama "Vigenère" berasal dari nama seorang diplomat Prancis,
+                        Blaise de Vigenère, yang tidak menemukan metode ini, tetapi populerkannya pada abad ke-16.
                     </div>
                     <button><a href="vignere.php">Vignere</a></button>
                 </div>
@@ -114,10 +116,16 @@
                 </div>
                 <div class="content">
                     <div>
-                        Lorem ipsum dolor sit amet consectetur
-                        adipisicing
-                        elit.Asperiores ut vero neque porro soluta corporis quidem quia reiciendis, incidunt
-                        praesentium quam dolorem et nihil, velit, dolorum repudiandae. Repellat, molestiae vitae!
+                        Algoritma Super Enkripsi merupakan gabungan dari ketiga algoritma sebelumnya yakni Caesar
+                        Chipper, Vignere, dan XOR. Dimana untuk enkripsi,
+                        pesan plaintext akan di enkripsi terlebih dahulu menggunakan Caesar, kemudian di enkripsi
+                        menggunakan alogritma Vignere, dan
+                        terakhir akan di enkripsi menjadi biner menggunakan algoritma XOR.
+                        Kemudian untuk deskripsi yakni kebalikan nya, dimana pesan Chippertext yang berupa biner akan di
+                        deskripsi menggunakan XOR, kemudian
+                        di deskripsi lagi menggunakan algoritma Vignere dan terakhir di deskripri menggunakan Algoritma
+                        Caesar sehingga menghasilkan
+                        Plaintext yang bisa di baca semua orang.
                     </div>
                     <button><a href="superEnkripsi.php">Super Enkripsi</a></button>
                 </div>

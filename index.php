@@ -15,7 +15,7 @@
             <h1><a href="index.html"><span>ENDETEXT</span>GENERATOR</a></h1>
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="caesarAlgoritm.php">Chaesar Chipper</a></li>
+                <li><a href="caesar.php">Chaesar Chipper</a></li>
                 <li><a href="xor.php">XOR</a></li>
                 <li><a href="vignere.php">Vignere</a></li>
                 <li><a href="superEnkripsi.php">Super Enkripsi</a></li>
@@ -77,7 +77,7 @@
                         dari input yang berisi "true" (1). Dalam konteks enkripsi, XOR digunakan untuk menggabungkan
                         pesan dengan kunci, dan hasilnya adalah pesan terenkripsi.
                     </div>
-                    <button><a href="xor.php">XOR</a></button>
+                    <button><a href="testing/xor.php">XOR</a></button>
                 </div>
             </div>
             <br><br>
@@ -99,7 +99,7 @@
                         tunggal seperti dalam Caesar Cipher. Nama "Vigenère" berasal dari nama seorang diplomat Prancis,
                         Blaise de Vigenère, yang tidak menemukan metode ini, tetapi populerkannya pada abad ke-16.
                     </div>
-                    <button><a href="vignere.php">Vignere</a></button>
+                    <button><a href="testing/vignere.php">Vignere</a></button>
                 </div>
             </div>
             <br><br>

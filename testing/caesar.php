@@ -26,11 +26,13 @@
     <?php
     function caesarCipher($text, $shift, $action) {
         $result = "";
+        
         $shift = ($action == 'encrypt') ? $shift : -$shift;
         // jika action=decrypt, $shift akan menjadi negatif agar proses dekripsi berfungsi dengan benar
         // shift=key(kunci)
         for ($i = 0; $i < strlen($text); $i++) {
             $char = $text[$i];
+            array_push($arrayPlaintext, $char);
             if (ctype_alpha($char)) { // jika huruf alfabet 
                 $isUpperCase = ctype_upper($char); // huruf besar atau kecil
                 $char = strtolower($char); // diubah ke huruf kecil
@@ -46,9 +48,13 @@
             } else {
                 $char = $text[$i]; // Jaga karakter non-alphabet seperti spasi atau tanda baca
             }
-
+            array_push($arrayChippertext, $char);
             $result .= $char; //gabungkan karakter
+
+
+            echo "char awal : ".$arrayPlaintext[$i]." -------> ".$arrayChippertext[$i]."<br>";
         }
+        
 
         return $result;
     }

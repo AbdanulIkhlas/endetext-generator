@@ -15,7 +15,7 @@
             <h1><a href="index.html"><span>ENDETEXT</span>GENERATOR</a></h1>
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="caesar.php">Chaesar Chipper</a></li>
+                <li><a href="caesarAlgoritm.php">Chaesar Chipper</a></li>
                 <li><a href="xor.php">XOR</a></li>
                 <li><a href="vignere.php">Vignere</a></li>
                 <li><a href="superEnkripsi.php">Super Enkripsi</a></li>

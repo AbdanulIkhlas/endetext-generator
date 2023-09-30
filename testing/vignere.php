@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Vigenère Cipher</title>
 </head>
+
 <body>
     <h1>Vigenère Cipher</h1>
     <form method="post" action="">
@@ -72,4 +74,5 @@
     }
     ?>
 </body>
+
 </html>

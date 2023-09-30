@@ -249,6 +249,8 @@ main .content form label.btn {
 /* style untuk textarea */
 main .content form textarea.form-control {
     border: 0.5px solid rgb(171, 171, 171);
+    font-size: 14pt;
+    padding: 15px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
@@ -262,7 +264,7 @@ main .content form .input-group {
 /* style button form */
 main .content form button {
     margin-inline: auto;
-    width: 15vw;
+    width: 25vw;
     padding: 10px;
     background-color: greenyellow;
     border: 1px solid rgb(180, 180, 180);
@@ -280,13 +282,52 @@ main .content label {
 
 main .content .hasil {
     width: 100%;
+    font-size: 14pt;
     min-height: 13vh;
     background-color: rgb(239, 239, 239);
-    padding: 10px;
+    padding: 15px;
     border-radius: 8px;
     border: 0.5px solid rgb(171, 171, 171);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
+
+main .content .proses {
+    width: 25vw;
+    background-color: rgb(255, 93, 93);
+    border-radius: 8px;
+    border: 0.5px solid rgb(171, 171, 171);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    box-sizing: border-box;
+    margin-top: 25px;
+    padding: 5px 20px 2px;
+    box-shadow: 1px 1px 2px 2px grey;
+}
+
+.proses.active .isi-proses {
+    display: block;
+}
+
+.judul-proses {
+    font-family: 'Martian Mono', monospace;
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.isi-proses {
+    font-size: 12pt;
+    display: none;
+    line-height: 30px;
+    border-top: 1px solid rgb(46, 0, 0);
+}
+
+
+
 
 /* end style main */
 

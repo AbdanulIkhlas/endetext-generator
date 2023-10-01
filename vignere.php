@@ -94,6 +94,14 @@ include "allAlgorithmFunction.php";
                 $key = preg_replace("/[^a-zA-Z]/", "", $key);
                 $action = $_POST["action"];
                 $result = vigenereCipher($text, $key, $action);
+
+                if($action == "enkripsi"){
+                    $input = "Plaintext";
+                    $output = "ChipperText";
+                }else{
+                    $input = "ChipperText";
+                    $output = "Plaintext";
+                }
             }
             ?>
             <?php 
@@ -114,12 +122,12 @@ include "allAlgorithmFunction.php";
                     <div class="isi-proses">
                         <table>
                             <tr>
-                                <td class="header-table">Plaintext</td>
+                                <td class="header-table"><?php echo $input ?></td>
                                 <td class="header-table"></td>
                                 <td class="header-table">key</td>
                                 <td class="header-table"></td>
                                 <td class="header-table"></td>
-                                <td class="header-table">Chippertext</td>
+                                <td class="header-table"><?php echo $output ?></td>
                             </tr>
                             <?php 
                         $keyIndex = 0;

@@ -83,7 +83,7 @@ include "allAlgorithmFunction.php";
                         value="<?php if (isset($_POST['key'])) echo htmlspecialchars($_POST['key']); ?>" required>
                 </div>
                 <div align="center" class="mb-3">
-                    <button type="submit">Enkripsi</button>
+                    <button type="submit">Proses</button>
                 </div>
             </form>
             <?php 
@@ -93,6 +93,13 @@ include "allAlgorithmFunction.php";
                 $action = $_POST["action"];
                 $result = caesarCipher($textInput, $key, $action);
                 
+                if($action == "enkripsi"){
+                    $input = "Plaintext";
+                    $output = "ChipperText";
+                }else{
+                    $input = "ChipperText";
+                    $output = "Plaintext";
+                }
             }
             ?>
             <?php 
@@ -113,9 +120,9 @@ include "allAlgorithmFunction.php";
                     <div class="isi-proses">
                         <table>
                             <tr>
-                                <td class="header-table">Plaintext</td>
+                                <td class="header-table"><?php echo $input ?></td>
                                 <td class="header-table"></td>
-                                <td class="header-table">Chippertext</td>
+                                <td class="header-table"><?php echo $output ?></td>
                             </tr>
                             <?php 
                         for($i = 0; $i < strlen($textInput); $i++){

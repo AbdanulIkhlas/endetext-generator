@@ -117,6 +117,14 @@ include "allAlgorithmFunction.php";
                 $action = $_POST["action"];
                 $keyType = $_POST["key-type"];
                 $result = xorCipher($text, $key, $keyType);
+
+                if($action == "enkripsi"){
+                    $input = "Ptext";
+                    $output = "CText";
+                }else{
+                    $input = "CText";
+                    $output = "Ptext";
+                }
             }
             ?>
             <?php 
@@ -149,7 +157,7 @@ include "allAlgorithmFunction.php";
                         ?>
                         <table>
                             <tr>
-                                <td><?php echo "Character " ?></td>
+                                <td><?php echo $input ?></td>
                                 <td>:</td>
                                 <td><?php echo $text[$i] ?></td>
                                 <td></td>
@@ -167,7 +175,7 @@ include "allAlgorithmFunction.php";
                                 <td><?php echo "Biner     : " . decbin(ord($key)) ?></td>
                             </tr>
                             <tr>
-                                <td><?php echo "Result "?></td>
+                                <td><?php echo $output ?></td>
                                 <td>:</td>
                                 <td><?php echo $result[$i] ?></td>
                                 <td></td>

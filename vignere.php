@@ -2,44 +2,8 @@
 <html lang="en">
 
 <?php 
-function vigenereCipher($text, $key, $action) {
-    $result = '';
-    $key = strtoupper($key);// diubah ke huruf besar untuk mempermudah penjumlahan
-    $key = preg_replace("/[^a-zA-Z]/", "", $key);// Filter kata kunci hanya dengan huruf alfabet
-    $keyLength = strlen($key);// panjang kunci
-    $keyIndex = 0;
-
-    for ($i = 0; $i < strlen($text); $i++) {
-        $char = $text[$i];
-        if (ctype_alpha($char)) { // jika huruf alfabet 
-            $isLowerCase = ctype_lower($char); // huruf besar atau kecil
-            $char = strtoupper($char);
-            $shift = ord($key[$keyIndex]) - 65;
-            // ord=mengambil kode ASCII dari karakter 
-            // dikurang 65 untuk memudahkan perhitungan (65=kode ASCII huruf A)
-            if ($action === 'deskripsi') {
-                $shift = -$shift;// jika action=decrypt, $shift akan menjadi negatif agar proses dekripsi berfungsi dengan benar
-            }
-            // RUMUS C = (P+K) mod 26 ; P = (C-K) mod 26 
-            $char = chr(((ord($char) - 65 + $shift + 26) % 26) + 65);
-            // ord=mengambil kode ASCII dari karakter
-            // dikurangkan 65 untuk mengubah indeks ke rentang 0-25
-            // tambahkan dengan shift atau kunci dan tambahkan 26 dan operasi modulo (%26) untuk memastikan hasil dalam rentang 0-25
-            // ditambah 65 untuk mengembalikan dalam kode ASCII
-
-            if ($isLowerCase) {
-                $char = strtolower($char);// jika aslinya huruf kecil dikembalikan
-            }
-            echo $key[$keyIndex];
-
-            $keyIndex = ($keyIndex + 1) % $keyLength;
-            // karakter kunci berikutnya, jika sudah mencapai panjang kata kunci, maka akan kembali ke 0 untuk diulang dengan modulo
-        }
-        $result .= $char;
-    }
-
-    return $result;
-}
+// Memanggil semua function algoritma
+include "allAlgorithmFunction.php";
 ?>
 
 <head>
@@ -59,26 +23,40 @@ function vigenereCipher($text, $key, $action) {
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="caesar.php">Chaesar Chipper</a></li>
-                <li><a href="xor.php">XOR</a></li>
                 <li><a href="vignere.php">Vignere</a></li>
+                <li><a href="xor.php">XOR</a></li>
                 <li><a href="superEnkripsi.php">Super Enkripsi</a></li>
             </ul>
         </div>
     </header>
     <main>
         <section>
-            <p>
-                <span class="important-text">Algoritma Vignere</span>
-                <br><br>
-                Melakukan enkripsi atau deskripsi pesan dengan menggunakan kunci yang terdiri dari beberapa karakter,
-                bukan hanya satu pergeseran tunggal.
-                <br><br>
-                Langkah-langkah : <br>
-                1. Memilih terlebih dahulu apakah akan melakukan enkripsi atau desripsi <br>
-                2. Input pesan yang ingin di eksekusi <br>
-                3. Input key / shift (harus alfabet) <br>
-                4. Tekan tombol proses untuk melihat hasilnya <br>
-            </p>
+            <div class="penjelasan">
+                <div class="judul-penjelasan">
+                    <div>
+                        <p class="important-text"> Algoritma Vignere</p>
+                        <p>
+                            Melakukan enkripsi atau deskripsi pesan dengan menggunakan kunci yang terdiri dari beberapa
+                            karakter, <br>
+                            bukan hanya satu pergeseran tunggal.
+                        </p>
+                    </div>
+                    <div class="icon-down">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black"
+                            class="bi bi-chevron-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="langkah-langkah">
+                    <p>Langkah-langkah : </p>
+                    <p>1. Memilih terlebih dahulu apakah akan melakukan enkripsi atau desripsi</p>
+                    <p>2. Input pesan yang ingin di eksekusi</p>
+                    <p>3. Input key / shift (harus alfabet)</p>
+                    <p>4. Tekan tombol proses untuk melihat hasilnya </p>
+                </div>
+            </div>
         </section>
         <section class="content">
             <form method="post" action="">
@@ -131,17 +109,36 @@ function vigenereCipher($text, $key, $action) {
                         </div>
                     </div>
                     <div class="isi-proses">
-                        <?php 
+                        <table>
+                            <tr>
+                                <td class="header-table">Plaintext</td>
+                                <td class="header-table"></td>
+                                <td class="header-table">key</td>
+                                <td class="header-table"></td>
+                                <td class="header-table"></td>
+                                <td class="header-table">Chippertext</td>
+                            </tr>
+                            <?php 
                         $keyIndex = 0;
                         $keyLength = strlen($key);
                         for($i = 0; $i < strlen($text); $i++){
                             if($text[$i] != " "){
-                                echo $text[$i]." + ".$key[$keyIndex]. " mod 26 " ."  ---------------------> ".$result[$i]."<br>";
+                        ?>
+                            <tr>
+                                <td><?php echo $text[$i] ?></td>
+                                <td> + </td>
+                                <td><?php echo $key[$keyIndex] ?></td>
+                                <td><?php echo "mod 26" ?></td>
+                                <td> ---------></td>
+                                <td><?php echo $result[$i] ?></td>
+                            </tr>
+                            <?php 
                                 $keyIndex++;
                                 if($keyIndex > $keyLength-1) $keyIndex = 0;
                             }
                         }
                         ?>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -176,6 +173,26 @@ function vigenereCipher($text, $key, $action) {
         </div>
     </footer>
     <script src="script/interactive.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mengambil elemen judul-penjelasan
+            let judulPenjelasan = document.querySelector('.judul-penjelasan');
+
+            // Mengambil elemen langkah-langkah yang terkait
+            let langkah = document.querySelector('.langkah-langkah');
+
+            // Menambahkan event listener pada judul-penjelasan
+            judulPenjelasan.addEventListener('click', function () {
+                // Jika langkah-langkah aktif, maka nonaktifkan (display:none)
+                if (langkah.style.display === 'block') {
+                    langkah.style.display = 'none';
+                } else {
+                    // Jika tidak aktif, maka aktifkan (display:block)
+                    langkah.style.display = 'block';
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

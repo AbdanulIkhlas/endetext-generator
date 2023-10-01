@@ -190,6 +190,11 @@ header {
     transition: .3s ease;
 }
 
+.header-container ul li:nth-child(2) {
+    border-bottom: 1px solid black;
+}
+
+
 /* end style header  */
 
 
@@ -215,6 +220,31 @@ main {
     font-size: 16pt;
     font-weight: 600;
 }
+
+
+.penjelasan .judul-penjelasan {
+    padding: 5px 10px 10px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.judul-penjelasan p:nth-child(1) {
+    font-size: 20pt;
+    margin-bottom: 10px;
+}
+
+
+main section .penjelasan .langkah-langkah {
+    line-height: 30px;
+    display: none;
+}
+
+.judul-penjelasan.active .icon-down {
+    transform: rotate(180deg);
+}
+
 
 main section {
     margin-bottom: 20px;
@@ -326,7 +356,20 @@ main .content .proses {
     border-top: 1px solid rgb(46, 0, 0);
 }
 
+.isi-proses table {
+    margin-block: 10px;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid black;
+}
 
+.isi-proses td {
+    text-align: center;
+}
+
+.isi-proses .header-table {
+    border-bottom: 1px solid black;
+}
 
 
 /* end style main */

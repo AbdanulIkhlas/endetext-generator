@@ -3,34 +3,8 @@
 
 <?php 
 
-// ALGORITMA CAESAR CHIPPER
-function caesarCipher($text, $key, $action) {
-    $result = "";
-    $key = ($action == 'enkripsi') ? $key : -$key;
-    // jika action=decrypt, $key akan menjadi negatif agar proses dekripsi berfungsi dengan benar
-    // key=key(kunci)
-    for ($i = 0; $i < strlen($text); $i++) {
-        $char = $text[$i];
-        if (ctype_alpha($char)) { // jika huruf alfabet 
-            $isUpperCase = ctype_upper($char); // huruf besar atau kecil
-            $char = strtolower($char); // diubah ke huruf kecil
-            // RUMUS C = (P+K) mod 26 ; P = (C-K) mod 26 
-            $char = chr(((ord($char) - 97 + $key + 26) % 26) + 97);
-            // ord=mengambil kode ASCII dari karakter 
-            // dikurang 97 untuk memudahkan perhitungan (97=kode ASCII huruf a)
-            // tambahkan dengan key atau kunci dan tambahkan 26 dan operasi modulo (%26) untuk memastikan hasil dalam rentang 0-25
-            // ditambah 97 untuk mengembalikan dalam kode ASCII
-            if ($isUpperCase) {
-                $char = strtoupper($char);// jika aslinya huruf besar dikembalikan
-            }
-        } else {
-            $char = $text[$i]; // Jaga karakter non-alphabet seperti spasi atau tanda baca
-        }
-        $result .= $char; //gabungkan karakter
-    }
-
-    return $result;
-}
+// Memanggil semua function algoritma
+include "allAlgorithmFunction.php";
 ?>
 
 <head>
@@ -50,25 +24,39 @@ function caesarCipher($text, $key, $action) {
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="caesar.php">Chaesar Chipper</a></li>
-                <li><a href="xor.php">XOR</a></li>
                 <li><a href="vignere.php">Vignere</a></li>
+                <li><a href="xor.php">XOR</a></li>
                 <li><a href="superEnkripsi.php">Super Enkripsi</a></li>
             </ul>
         </div>
     </header>
     <main>
         <section>
-            <p>
-                <span class="important-text">Algoritma Caesar Chipper</span>
-                <br><br> Melakukan enkripsi atau deskripsi pesan dengan menggeser setiap huruf dalam teks asli
-                sejumlah kunci yang ditentukan.
-                <br><br>
-                Langkah-langkah : <br>
-                1. Memilih terlebih dahulu apakah akan melakukan enkripsi/desripsi <br>
-                2. Input pesan yang ingin di eksekusi <br>
-                3. Input key (kunci pergeseran) dengan menggunakan angka antara 1-25 <br>
-                4. Tekan tombol enkripsi/deskripsi untuk melihat hasilnya <br>
-            </p>
+            <div class="penjelasan">
+                <div class="judul-penjelasan">
+                    <div>
+                        <p class="important-text">Algoritma Caesar Chipper</p>
+                        <p>
+                            Melakukan enkripsi atau deskripsi pesan dengan menggeser setiap huruf dalam teks asli
+                            sejumlah kunci yang ditentukan.
+                        </p>
+                    </div>
+                    <div class="icon-down">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black"
+                            class="bi bi-chevron-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="langkah-langkah">
+                    <p>Langkah-langkah : </p>
+                    <p>1. Memilih terlebih dahulu apakah akan melakukan enkripsi atau desripsi</p>
+                    <p>2. Input pesan yang ingin di eksekusi</p>
+                    <p>3. Input key (kunci pergeseran) dengan menggunakan angka antara 1-25</p>
+                    <p>4. Tekan tombol proses untuk melihat hasilnya </p>
+                </div>
+            </div>
         </section>
         <section class="content">
             <form method="post" action="">
@@ -120,13 +108,26 @@ function caesarCipher($text, $key, $action) {
                         </div>
                     </div>
                     <div class="isi-proses">
-                        <?php 
+                        <table>
+                            <tr>
+                                <td class="header-table">Plaintext</td>
+                                <td class="header-table"></td>
+                                <td class="header-table">Chippertext</td>
+                            </tr>
+                            <?php 
                         for($i = 0; $i < strlen($textInput); $i++){
                             if($textInput[$i] != " "){
-                                echo $textInput[$i]."  -----------------------------------> ".$result[$i]."<br>";
+                        ?>
+                            <tr>
+                                <td><?php echo $textInput[$i] ?></td>
+                                <td> -------------------------></td>
+                                <td><?php echo $result[$i] ?></td>
+                            </tr>
+                            <?php 
                             }
                         }
                         ?>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -161,6 +162,26 @@ function caesarCipher($text, $key, $action) {
         </div>
     </footer>
     <script src="script/interactive.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mengambil elemen judul-penjelasan
+            let judulPenjelasan = document.querySelector('.judul-penjelasan');
+
+            // Mengambil elemen langkah-langkah yang terkait
+            let langkah = document.querySelector('.langkah-langkah');
+
+            // Menambahkan event listener pada judul-penjelasan
+            judulPenjelasan.addEventListener('click', function () {
+                // Jika langkah-langkah aktif, maka nonaktifkan (display:none)
+                if (langkah.style.display === 'block') {
+                    langkah.style.display = 'none';
+                } else {
+                    // Jika tidak aktif, maka aktifkan (display:block)
+                    langkah.style.display = 'block';
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

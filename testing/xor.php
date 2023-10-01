@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>XOR Cipher</title>
 </head>
+
 <body>
     <h1>XOR Cipher</h1>
     <form method="post" action="">
@@ -95,7 +97,7 @@
         keyDecimalInput.disabled = true;
 
         // Tangani perubahan saat pengguna memilih tipe kunci
-        keyTypeSelect.addEventListener("change", function() {
+        keyTypeSelect.addEventListener("change", function () {
             if (keyTypeSelect.value === "ascii-char") {
                 keyCharInput.disabled = false;
                 keyDecimalInput.disabled = true;
@@ -110,4 +112,5 @@
     </script>
 
 </body>
+
 </html>

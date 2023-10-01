@@ -190,6 +190,11 @@ header {
     transition: .3s ease;
 }
 
+.header-container ul li:nth-child(4) {
+    border-bottom: 1px solid black;
+}
+
+
 /* end style header  */
 
 
@@ -221,6 +226,44 @@ main section {
     box-sizing: border-box;
 }
 
+.penjelasan .judul-penjelasan {
+    padding: 5px 10px 10px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.judul-penjelasan p:nth-child(1) {
+    font-size: 20pt;
+    margin-bottom: 10px;
+}
+
+.ascii-image {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin-block: 8px;
+}
+
+main section .penjelasan .ascii-image img {
+    width: 800px;
+    border: 1px solid black;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+main section .penjelasan .langkah-langkah {
+    line-height: 30px;
+    display: none;
+}
+
+.judul-penjelasan.active .icon-down {
+    transform: rotate(180deg);
+}
+
 /* tentang web */
 main section:nth-child(1) {
     box-shadow: 0 0px 5px 1px rgb(175, 175, 175);
@@ -229,6 +272,7 @@ main section:nth-child(1) {
     padding: 20px;
     border-left: 5px solid rgb(136, 136, 136);
     margin: 30px auto;
+    box-sizing: border-box;
 }
 
 main .content {
@@ -259,6 +303,12 @@ main .content form .input-group {
     border: 0.5px solid rgb(171, 171, 171);
     border-radius: 7px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+main .content form .input-group select {
+    border: 0.5px solid rgb(171, 171, 171);
+    border-right: 2px solid rgb(148, 148, 148);
+    padding-inline: 5px;
 }
 
 /* style button form */
@@ -325,7 +375,22 @@ main .content .proses {
     display: none;
     line-height: 30px;
     border-top: 1px solid rgb(46, 0, 0);
+    text-align: left;
+    margin-block: 10px;
 }
+
+.isi-proses table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.isi-proses td {
+    padding-left: 4px;
+}
+
+
+
 
 
 

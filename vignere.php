@@ -62,10 +62,13 @@ include "allAlgorithmFunction.php";
             <form method="post" action="">
                 <div class="btn-group mb-4" role="group" aria-label="Basic radio toggle button group">
                     <input type="radio" class="btn-check" name="action" id="action1" autocomplete="off" value="enkripsi"
-                        checked>
+                        <?php echo (isset($_POST['action']) && $_POST['action'] === 'enkripsi') ? 'checked' : ''; ?>
+                        required>
                     <label class="btn btn-outline-secondary" for="action1">Enkripsi</label>
                     <input type="radio" class="btn-check" name="action" id="action2" autocomplete="off"
-                        value="deskripsi">
+                        value="deskripsi"
+                        <?php echo (isset($_POST['action']) && $_POST['action'] === 'deskripsi') ? 'checked' : ''; ?>
+                        required>
                     <label class="btn btn-outline-secondary" for="action2">Deskripsi</label>
                 </div>
                 <div class="mb-4">

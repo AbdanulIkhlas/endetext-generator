@@ -60,7 +60,7 @@ include "allAlgorithmFunction.php";
                     </p>
                     <p>
                         &nbsp;&nbsp;&nbsp; - Untuk Desimal ASCII disarankan input antara (<span
-                            class="important-text">0</span>
+                            class="important-text">1</span>
                         sampai dengan
                         <span class="important-text">95</span>)
                     </p>
@@ -74,10 +74,13 @@ include "allAlgorithmFunction.php";
             <form method="post" action="">
                 <div class="btn-group mb-4" role="group" aria-label="Basic radio toggle button group">
                     <input type="radio" class="btn-check" name="action" id="action1" autocomplete="off" value="enkripsi"
-                        checked>
+                        <?php echo (isset($_POST['action']) && $_POST['action'] === 'enkripsi') ? 'checked' : ''; ?>
+                        required>
                     <label class="btn btn-outline-secondary" for="action1">Enkripsi</label>
                     <input type="radio" class="btn-check" name="action" id="action2" autocomplete="off"
-                        value="deskripsi">
+                        value="deskripsi"
+                        <?php echo (isset($_POST['action']) && $_POST['action'] === 'deskripsi') ? 'checked' : ''; ?>
+                        required>
                     <label class="btn btn-outline-secondary" for="action2">Deskripsi</label>
                 </div>
                 <div class="mb-4">
@@ -90,11 +93,11 @@ include "allAlgorithmFunction.php";
                     <select id="key-type" name="key-type" required>
                         <!-- setelah submit, akan menampilkan yang dipilih sebelumnya -->
                         <option value="ascii-char"
-                            <?php echo ((isset($_POST['key-type'])) === 'ascii-char') ? 'selected' : ''; ?>>
+                            <?php echo (isset($_POST['key-type']) && $_POST['key-type'] === 'ascii-char') ? 'selected' : ''; ?>>
                             Karakter ASCII
                         </option>
                         <option value="ascii-decimal"
-                            <?php echo ((isset($_POST['key-type'])) === 'ascii-decimal') ? 'selected' : ''; ?>>
+                            <?php echo (isset($_POST['key-type']) && $_POST['key-type'] === 'ascii-decimal') ? 'selected' : ''; ?>>
                             Desimal ASCII
                         </option>
                     </select>

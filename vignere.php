@@ -30,6 +30,7 @@ function vigenereCipher($text, $key, $action) {
             if ($isLowerCase) {
                 $char = strtolower($char);// jika aslinya huruf kecil dikembalikan
             }
+            echo $key[$keyIndex];
 
             $keyIndex = ($keyIndex + 1) % $keyLength;
             // karakter kunci berikutnya, jika sudah mencapai panjang kata kunci, maka akan kembali ke 0 untuk diulang dengan modulo
@@ -70,7 +71,7 @@ function vigenereCipher($text, $key, $action) {
                 <span class="important-text">Algoritma Vignere</span>
                 <br><br>
                 Melakukan enkripsi atau deskripsi pesan dengan menggunakan kunci yang terdiri dari beberapa karakter,
-                bukan hanya satu pergeseran tunggal
+                bukan hanya satu pergeseran tunggal.
                 <br><br>
                 Langkah-langkah : <br>
                 1. Memilih terlebih dahulu apakah akan melakukan enkripsi atau desripsi <br>
@@ -122,7 +123,7 @@ function vigenereCipher($text, $key, $action) {
                     <div class="judul-proses">
                         <div>Proses</div>
                         <div class="icon-down">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black"
                                 class="bi bi-chevron-down" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
                                     d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
@@ -131,9 +132,13 @@ function vigenereCipher($text, $key, $action) {
                     </div>
                     <div class="isi-proses">
                         <?php 
+                        $keyIndex = 0;
+                        $keyLength = strlen($key);
                         for($i = 0; $i < strlen($text); $i++){
                             if($text[$i] != " "){
-                                echo $text[$i]."  -----------------------------------> ".$result[$i]."<br>";
+                                echo $text[$i]." + ".$key[$keyIndex]. " mod 26 " ."  ---------------------> ".$result[$i]."<br>";
+                                $keyIndex++;
+                                if($keyIndex > $keyLength-1) $keyIndex = 0;
                             }
                         }
                         ?>

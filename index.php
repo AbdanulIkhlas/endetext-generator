@@ -127,7 +127,7 @@
                         Caesar sehingga menghasilkan
                         Plaintext yang bisa di baca semua orang.
                     </div>
-                    <button><a href="superEnkripsi.php">Super Enkripsi</a></button>
+                    <button><a href="testing/superEnkripsi.php">Super Enkripsi</a></button>
                 </div>
             </div>
         </section>

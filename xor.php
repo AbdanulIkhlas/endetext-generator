@@ -23,8 +23,8 @@ include "allAlgorithmFunction.php";
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="caesar.php">Chaesar Chipper</a></li>
-                <li><a href="xor.php">XOR</a></li>
                 <li><a href="vignere.php">Vignere</a></li>
+                <li><a href="xor.php">XOR</a></li>
                 <li><a href="superEnkripsi.php">Super Enkripsi</a></li>
             </ul>
         </div>

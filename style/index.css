@@ -190,6 +190,10 @@ header {
     transition: .3s ease;
 }
 
+.header-container ul li:nth-child(1) {
+    border-bottom: 1px solid black;
+}
+
 /* end style header  */
 
 

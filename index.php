@@ -12,12 +12,12 @@
 <body>
     <header>
         <div class="header-container">
-            <h1><a href="index.html"><span>ENDETEXT</span>GENERATOR</a></h1>
+            <h1><a href="index.php"><span>ENDETEXT</span>GENERATOR</a></h1>
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="caesar.php">Chaesar Chipper</a></li>
-                <li><a href="xor.php">XOR</a></li>
                 <li><a href="vignere.php">Vignere</a></li>
+                <li><a href="xor.php">XOR</a></li>
                 <li><a href="superEnkripsi.php">Super Enkripsi</a></li>
             </ul>
         </div>
@@ -60,7 +60,29 @@
             <br><br>
             <div class="algoritma">
                 <div class="judul-algoritma">
-                    <p> 2. Algoritma XOR </p>
+                    <p>2. Algoritma Vignere</p>
+                    <div class="icon-down">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black"
+                            class="bi bi-chevron-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="content">
+                    <div>
+                        Vigenère Cipher adalah jenis enkripsi yang lebih kuat daripada Caesar Cipher. Ia mengenkripsi
+                        pesan dengan menggunakan kunci yang terdiri dari beberapa karakter, bukan hanya satu pergeseran
+                        tunggal seperti dalam Caesar Cipher. Nama "Vigenère" berasal dari nama seorang diplomat Prancis,
+                        Blaise de Vigenère, yang tidak menemukan metode ini, tetapi populerkannya pada abad ke-16.
+                    </div>
+                    <button><a href="testing/vignere.php">Vignere</a></button>
+                </div>
+            </div>
+            <br><br>
+            <div class="algoritma">
+                <div class="judul-algoritma">
+                    <p> 3. Algoritma XOR </p>
                     <div class="icon-down">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black"
                             class="bi bi-chevron-down" viewBox="0 0 16 16">
@@ -78,28 +100,6 @@
                         pesan dengan kunci, dan hasilnya adalah pesan terenkripsi.
                     </div>
                     <button><a href="testing/xor.php">XOR</a></button>
-                </div>
-            </div>
-            <br><br>
-            <div class="algoritma">
-                <div class="judul-algoritma">
-                    <p>3. Algoritma Vignere</p>
-                    <div class="icon-down">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black"
-                            class="bi bi-chevron-down" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="content">
-                    <div>
-                        Vigenère Cipher adalah jenis enkripsi yang lebih kuat daripada Caesar Cipher. Ia mengenkripsi
-                        pesan dengan menggunakan kunci yang terdiri dari beberapa karakter, bukan hanya satu pergeseran
-                        tunggal seperti dalam Caesar Cipher. Nama "Vigenère" berasal dari nama seorang diplomat Prancis,
-                        Blaise de Vigenère, yang tidak menemukan metode ini, tetapi populerkannya pada abad ke-16.
-                    </div>
-                    <button><a href="testing/vignere.php">Vignere</a></button>
                 </div>
             </div>
             <br><br>

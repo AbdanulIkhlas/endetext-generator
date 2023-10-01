@@ -23,8 +23,8 @@ include "allAlgorithmFunction.php";
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="caesar.php">Chaesar Chipper</a></li>
-                <li><a href="xor.php">XOR</a></li>
                 <li><a href="vignere.php">Vignere</a></li>
+                <li><a href="xor.php">XOR</a></li>
                 <li><a href="superEnkripsi.php">Super Enkripsi</a></li>
             </ul>
         </div>
@@ -34,7 +34,7 @@ include "allAlgorithmFunction.php";
             <div class="penjelasan">
                 <div class="judul-penjelasan">
                     <div>
-                        <p class="important-text">Algoritma Algoritma Vignere</p>
+                        <p class="important-text"> Algoritma Vignere</p>
                         <p>
                             Melakukan enkripsi atau deskripsi pesan dengan menggunakan kunci yang terdiri dari beberapa
                             karakter, <br>

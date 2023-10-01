@@ -24,8 +24,8 @@ include "allAlgorithmFunction.php";
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="caesar.php">Chaesar Chipper</a></li>
-                <li><a href="xor.php">XOR</a></li>
                 <li><a href="vignere.php">Vignere</a></li>
+                <li><a href="xor.php">XOR</a></li>
                 <li><a href="superEnkripsi.php">Super Enkripsi</a></li>
             </ul>
         </div>
@@ -162,6 +162,26 @@ include "allAlgorithmFunction.php";
         </div>
     </footer>
     <script src="script/interactive.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mengambil elemen judul-penjelasan
+            let judulPenjelasan = document.querySelector('.judul-penjelasan');
+
+            // Mengambil elemen langkah-langkah yang terkait
+            let langkah = document.querySelector('.langkah-langkah');
+
+            // Menambahkan event listener pada judul-penjelasan
+            judulPenjelasan.addEventListener('click', function () {
+                // Jika langkah-langkah aktif, maka nonaktifkan (display:none)
+                if (langkah.style.display === 'block') {
+                    langkah.style.display = 'none';
+                } else {
+                    // Jika tidak aktif, maka aktifkan (display:block)
+                    langkah.style.display = 'block';
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

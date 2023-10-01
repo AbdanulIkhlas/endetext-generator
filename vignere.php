@@ -109,17 +109,36 @@ include "allAlgorithmFunction.php";
                         </div>
                     </div>
                     <div class="isi-proses">
-                        <?php 
+                        <table>
+                            <tr>
+                                <td class="header-table">Plaintext</td>
+                                <td class="header-table"></td>
+                                <td class="header-table">key</td>
+                                <td class="header-table"></td>
+                                <td class="header-table"></td>
+                                <td class="header-table">Chippertext</td>
+                            </tr>
+                            <?php 
                         $keyIndex = 0;
                         $keyLength = strlen($key);
                         for($i = 0; $i < strlen($text); $i++){
                             if($text[$i] != " "){
-                                echo $text[$i]." + ".$key[$keyIndex]. " mod 26 " ."  ---------------------> ".$result[$i]."<br>";
+                        ?>
+                            <tr>
+                                <td><?php echo $text[$i] ?></td>
+                                <td> + </td>
+                                <td><?php echo $key[$keyIndex] ?></td>
+                                <td><?php echo "mod 26" ?></td>
+                                <td> ---------></td>
+                                <td><?php echo $result[$i] ?></td>
+                            </tr>
+                            <?php 
                                 $keyIndex++;
                                 if($keyIndex > $keyLength-1) $keyIndex = 0;
                             }
                         }
                         ?>
+                        </table>
                     </div>
                 </div>
             </div>

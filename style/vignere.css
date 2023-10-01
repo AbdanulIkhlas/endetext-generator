@@ -357,7 +357,20 @@ main .content .proses {
     border-top: 1px solid rgb(46, 0, 0);
 }
 
+.isi-proses table {
+    margin-block: 10px;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid black;
+}
 
+.isi-proses td {
+    text-align: center;
+}
+
+.isi-proses .header-table {
+    border-bottom: 1px solid black;
+}
 
 
 /* end style main */

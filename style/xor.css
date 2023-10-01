@@ -221,6 +221,19 @@ main section {
     box-sizing: border-box;
 }
 
+main section p span.ascii-image img {
+    width: 900px;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin-top: 10px;
+    object-fit: cover;
+    text-align: center;
+}
+
+main section p span.langkah-langkah {
+    line-height: 30px;
+}
+
 /* tentang web */
 main section:nth-child(1) {
     box-shadow: 0 0px 5px 1px rgb(175, 175, 175);

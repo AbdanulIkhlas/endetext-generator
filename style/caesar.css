@@ -301,6 +301,7 @@ main .content form button {
     border-radius: 8px;
     box-shadow: 2px 2px 2px 2px grey;
     font-weight: 600;
+    font-size: 14pt;
 }
 
 /* style untuk label */

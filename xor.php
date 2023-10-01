@@ -60,7 +60,7 @@ include "allAlgorithmFunction.php";
                     </p>
                     <p>
                         &nbsp;&nbsp;&nbsp; - Untuk Desimal ASCII disarankan input antara (<span
-                            class="important-text">0</span>
+                            class="important-text">1</span>
                         sampai dengan
                         <span class="important-text">95</span>)
                     </p>
@@ -93,11 +93,11 @@ include "allAlgorithmFunction.php";
                     <select id="key-type" name="key-type" required>
                         <!-- setelah submit, akan menampilkan yang dipilih sebelumnya -->
                         <option value="ascii-char"
-                            <?php echo ((isset($_POST['key-type'])) === 'ascii-char') ? 'selected' : ''; ?>>
+                            <?php echo (isset($_POST['key-type']) && $_POST['key-type'] === 'ascii-char') ? 'selected' : ''; ?>>
                             Karakter ASCII
                         </option>
                         <option value="ascii-decimal"
-                            <?php echo ((isset($_POST['key-type'])) === 'ascii-decimal') ? 'selected' : ''; ?>>
+                            <?php echo (isset($_POST['key-type']) && $_POST['key-type'] === 'ascii-decimal') ? 'selected' : ''; ?>>
                             Desimal ASCII
                         </option>
                     </select>

@@ -108,13 +108,26 @@ include "allAlgorithmFunction.php";
                         </div>
                     </div>
                     <div class="isi-proses">
-                        <?php 
+                        <table>
+                            <tr>
+                                <td class="header-table">Plaintext</td>
+                                <td class="header-table"></td>
+                                <td class="header-table">Chippertext</td>
+                            </tr>
+                            <?php 
                         for($i = 0; $i < strlen($textInput); $i++){
                             if($textInput[$i] != " "){
-                                echo $textInput[$i]."  -----------------------------------> ".$result[$i]."<br>";
+                        ?>
+                            <tr>
+                                <td><?php echo $textInput[$i] ?></td>
+                                <td> -------------------------></td>
+                                <td><?php echo $result[$i] ?></td>
+                            </tr>
+                            <?php 
                             }
                         }
                         ?>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -149,26 +162,6 @@ include "allAlgorithmFunction.php";
         </div>
     </footer>
     <script src="script/interactive.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Mengambil elemen judul-penjelasan
-            let judulPenjelasan = document.querySelector('.judul-penjelasan');
-
-            // Mengambil elemen langkah-langkah yang terkait
-            let langkah = document.querySelector('.langkah-langkah');
-
-            // Menambahkan event listener pada judul-penjelasan
-            judulPenjelasan.addEventListener('click', function () {
-                // Jika langkah-langkah aktif, maka nonaktifkan (display:none)
-                if (langkah.style.display === 'block') {
-                    langkah.style.display = 'none';
-                } else {
-                    // Jika tidak aktif, maka aktifkan (display:block)
-                    langkah.style.display = 'block';
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>

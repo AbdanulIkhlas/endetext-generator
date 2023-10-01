@@ -133,9 +133,17 @@ include "allAlgorithmFunction.php";
                 $keyXor = $_POST["key-xor"];
                 $action = $_POST["action"];
                 $keyType = $_POST["key-type"];
-                $resultCaesar = caesarCipher($text, $keyCaesar, $action);
-                $resultVignere = vigenereCipher($resultCaesar, $keyVignere, $action);
-                $resultXor = xorCipher($resultVignere, $keyXor, $keyType);
+                if($action === "enkripsi"){
+                    $resultCaesar = caesarCipher($text, $keyCaesar, $action);
+                    $resultVignere = vigenereCipher($resultCaesar, $keyVignere, $action);
+                    $finalResult = xorCipher($resultVignere, $keyXor, $keyType);
+                    $finalResult = $finalResult;
+                }else if($action === "deskripsi"){
+                    $finalResult = xorCipher($text, $keyXor, $keyType);
+                    $resultVignere = vigenereCipher($finalResult, $keyVignere, $action);
+                    $resultCaesar = caesarCipher($resultVignere, $keyCaesar, $action);
+                    $finalResult = $resultCaesar;
+                }
             }
             ?>
             <?php 
@@ -157,8 +165,8 @@ include "allAlgorithmFunction.php";
                         <?php 
                         // Konversi hasil ke biner
                         $resultBinary = '';
-                        for ($j = 0; $j < strlen($resultXor); $j++) {
-                            $resultBinary .= str_pad(decbin(ord($resultXor[$j])), 8, '0', STR_PAD_LEFT) . ' ';
+                        for ($j = 0; $j < strlen($finalResult); $j++) {
+                            $resultBinary .= str_pad(decbin(ord($finalResult[$j])), 8, '0', STR_PAD_LEFT) . ' ';
                             // decbin() mengonversi kode ASCII tersebut ke dalam representasi biner
                             // str_pad(..., 8, '0', STR_PAD_LEFT) menambahkan nol pada awal biner jika panjang biner kurang dari 8 digit.
                         }
@@ -187,11 +195,11 @@ include "allAlgorithmFunction.php";
                             <tr>
                                 <td><?php echo "Result "?></td>
                                 <td>:</td>
-                                <td><?php echo $resultXor[$i] ?></td>
+                                <td><?php echo $finalResult[$i] ?></td>
                                 <td></td>
                                 <td></td>
-                                <td><?php echo "ASCII     : " . ord($resultXor[$i])  ?></td>
-                                <td><?php echo "Biner     : " . decbin(ord($resultXor[$i])) ?></td>
+                                <td><?php echo "ASCII     : " . ord($finalResult[$i])  ?></td>
+                                <td><?php echo "Biner     : " . decbin(ord($finalResult[$i])) ?></td>
                             </tr>
                             <br>
                         </table>
@@ -216,8 +224,8 @@ include "allAlgorithmFunction.php";
                         <?php 
                         // Konversi hasil ke biner
                         $resultBinary = '';
-                        for ($j = 0; $j < strlen($resultXor); $j++) {
-                            $resultBinary .= str_pad(decbin(ord($resultXor[$j])), 8, '0', STR_PAD_LEFT) . ' ';
+                        for ($j = 0; $j < strlen($finalResult); $j++) {
+                            $resultBinary .= str_pad(decbin(ord($finalResult[$j])), 8, '0', STR_PAD_LEFT) . ' ';
                             // decbin() mengonversi kode ASCII tersebut ke dalam representasi biner
                             // str_pad(..., 8, '0', STR_PAD_LEFT) menambahkan nol pada awal biner jika panjang biner kurang dari 8 digit.
                         }
@@ -247,11 +255,11 @@ include "allAlgorithmFunction.php";
                             <tr>
                                 <td><?php echo "Result "?></td>
                                 <td>:</td>
-                                <td><?php echo $resultXor[$i] ?></td>
+                                <td><?php echo $finalResult[$i] ?></td>
                                 <td></td>
                                 <td></td>
-                                <td><?php echo "ASCII     : " . ord($resultXor[$i])  ?></td>
-                                <td><?php echo "Biner     : " . decbin(ord($resultXor[$i])) ?></td>
+                                <td><?php echo "ASCII     : " . ord($finalResult[$i])  ?></td>
+                                <td><?php echo "Biner     : " . decbin(ord($finalResult[$i])) ?></td>
                             </tr>
                             <br>
                         </table>
@@ -276,8 +284,8 @@ include "allAlgorithmFunction.php";
                         <?php 
                         // Konversi hasil ke biner
                         $resultBinary = '';
-                        for ($j = 0; $j < strlen($resultXor); $j++) {
-                            $resultBinary .= str_pad(decbin(ord($resultXor[$j])), 8, '0', STR_PAD_LEFT) . ' ';
+                        for ($j = 0; $j < strlen($finalResult); $j++) {
+                            $resultBinary .= str_pad(decbin(ord($finalResult[$j])), 8, '0', STR_PAD_LEFT) . ' ';
                             // decbin() mengonversi kode ASCII tersebut ke dalam representasi biner
                             // str_pad(..., 8, '0', STR_PAD_LEFT) menambahkan nol pada awal biner jika panjang biner kurang dari 8 digit.
                         }
@@ -307,11 +315,11 @@ include "allAlgorithmFunction.php";
                             <tr>
                                 <td><?php echo "Result "?></td>
                                 <td>:</td>
-                                <td><?php echo $resultXor[$i] ?></td>
+                                <td><?php echo $finalResult[$i] ?></td>
                                 <td></td>
                                 <td></td>
-                                <td><?php echo "ASCII     : " . ord($resultXor[$i])  ?></td>
-                                <td><?php echo "Biner     : " . decbin(ord($resultXor[$i])) ?></td>
+                                <td><?php echo "ASCII     : " . ord($finalResult[$i])  ?></td>
+                                <td><?php echo "Biner     : " . decbin(ord($finalResult[$i])) ?></td>
                             </tr>
                             <br>
                         </table>
@@ -327,7 +335,7 @@ include "allAlgorithmFunction.php";
                 <label for="hasil" class="form-label">Hasil : </label>
                 <div class="hasil">
                     <?php 
-                        if (isset($_POST['text'])) echo $resultXor;
+                        if (isset($_POST['text'])) echo $finalResult;
                     ?>
                 </div>
             </div>

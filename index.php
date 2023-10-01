@@ -54,7 +54,7 @@
                         sejumlah tetap yang ditentukan. Teknik ini dinamai sesuai dengan Julius Caesar, seorang jenderal
                         Romawi kuno, yang dikatakan menggunakannya untuk mengamankan komunikasi militer.
                     </div>
-                    <button><a href="testing/caesar.php">Caesar Chipper</a></button>
+                    <button><a href="caesar.php">Caesar Chipper</a></button>
                 </div>
             </div>
             <br><br>
@@ -76,7 +76,7 @@
                         tunggal seperti dalam Caesar Cipher. Nama "Vigenère" berasal dari nama seorang diplomat Prancis,
                         Blaise de Vigenère, yang tidak menemukan metode ini, tetapi populerkannya pada abad ke-16.
                     </div>
-                    <button><a href="testing/vignere.php">Vignere</a></button>
+                    <button><a href="vignere.php">Vignere</a></button>
                 </div>
             </div>
             <br><br>
@@ -99,7 +99,7 @@
                         dari input yang berisi "true" (1). Dalam konteks enkripsi, XOR digunakan untuk menggabungkan
                         pesan dengan kunci, dan hasilnya adalah pesan terenkripsi.
                     </div>
-                    <button><a href="testing/xor.php">XOR</a></button>
+                    <button><a href="xor.php">XOR</a></button>
                 </div>
             </div>
             <br><br>
@@ -127,7 +127,7 @@
                         Caesar sehingga menghasilkan
                         Plaintext yang bisa di baca semua orang.
                     </div>
-                    <button><a href="testing/superEnkripsi.php">Super Enkripsi</a></button>
+                    <button><a href="superEnkripsi.php">Super Enkripsi</a></button>
                 </div>
             </div>
         </section>

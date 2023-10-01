@@ -19,7 +19,7 @@ include "allAlgorithmFunction.php";
 <body>
     <header>
         <div class="header-container">
-            <h1><a href="index.html"><span>ENDETEXT</span>GENERATOR</a></h1>
+            <h1><a href="index.php"><span>ENDETEXT</span>GENERATOR</a></h1>
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="caesar.php">Chaesar Chipper</a></li>

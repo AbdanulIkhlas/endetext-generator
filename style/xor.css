@@ -255,6 +255,10 @@ main section .penjelasan .langkah-langkah {
     display: none;
 }
 
+.judul-penjelasan.active .icon-down {
+    transform: rotate(180deg);
+}
+
 /* tentang web */
 main section:nth-child(1) {
     box-shadow: 0 0px 5px 1px rgb(175, 175, 175);

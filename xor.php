@@ -90,11 +90,11 @@ include "allAlgorithmFunction.php";
                     <select id="key-type" name="key-type" required>
                         <!-- setelah submit, akan menampilkan yang dipilih sebelumnya -->
                         <option value="ascii-char"
-                            <?php echo ($_POST['key-type'] === 'ascii-char') ? 'selected' : ''; ?>>
+                            <?php echo ((isset($_POST['key-type'])) === 'ascii-char') ? 'selected' : ''; ?>>
                             Karakter ASCII
                         </option>
                         <option value="ascii-decimal"
-                            <?php echo ($_POST['key-type'] === 'ascii-decimal') ? 'selected' : ''; ?>>
+                            <?php echo ((isset($_POST['key-type'])) === 'ascii-decimal') ? 'selected' : ''; ?>>
                             Desimal ASCII
                         </option>
                     </select>
@@ -212,6 +212,26 @@ include "allAlgorithmFunction.php";
         </div>
     </footer>
     <script src="script/interactive.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mengambil elemen judul-penjelasan
+            let judulPenjelasan = document.querySelector('.judul-penjelasan');
+
+            // Mengambil elemen langkah-langkah yang terkait
+            let langkah = document.querySelector('.langkah-langkah');
+
+            // Menambahkan event listener pada judul-penjelasan
+            judulPenjelasan.addEventListener('click', function () {
+                // Jika langkah-langkah aktif, maka nonaktifkan (display:none)
+                if (langkah.style.display === 'block') {
+                    langkah.style.display = 'none';
+                } else {
+                    // Jika tidak aktif, maka aktifkan (display:block)
+                    langkah.style.display = 'block';
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -31,18 +31,32 @@ include "allAlgorithmFunction.php";
     </header>
     <main>
         <section>
-            <p>
-                <span class="important-text">Algoritma Vignere</span>
-                <br><br>
-                Melakukan enkripsi atau deskripsi pesan dengan menggunakan kunci yang terdiri dari beberapa karakter,
-                bukan hanya satu pergeseran tunggal.
-                <br><br>
-                Langkah-langkah : <br>
-                1. Memilih terlebih dahulu apakah akan melakukan enkripsi atau desripsi <br>
-                2. Input pesan yang ingin di eksekusi <br>
-                3. Input key / shift (harus alfabet) <br>
-                4. Tekan tombol proses untuk melihat hasilnya <br>
-            </p>
+            <div class="penjelasan">
+                <div class="judul-penjelasan">
+                    <div>
+                        <p class="important-text">Algoritma Algoritma Vignere</p>
+                        <p>
+                            Melakukan enkripsi atau deskripsi pesan dengan menggunakan kunci yang terdiri dari beberapa
+                            karakter, <br>
+                            bukan hanya satu pergeseran tunggal.
+                        </p>
+                    </div>
+                    <div class="icon-down">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black"
+                            class="bi bi-chevron-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="langkah-langkah">
+                    <p>Langkah-langkah : </p>
+                    <p>1. Memilih terlebih dahulu apakah akan melakukan enkripsi atau desripsi</p>
+                    <p>2. Input pesan yang ingin di eksekusi</p>
+                    <p>3. Input key / shift (harus alfabet)</p>
+                    <p>4. Tekan tombol proses untuk melihat hasilnya </p>
+                </div>
+            </div>
         </section>
         <section class="content">
             <form method="post" action="">
@@ -140,6 +154,26 @@ include "allAlgorithmFunction.php";
         </div>
     </footer>
     <script src="script/interactive.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mengambil elemen judul-penjelasan
+            let judulPenjelasan = document.querySelector('.judul-penjelasan');
+
+            // Mengambil elemen langkah-langkah yang terkait
+            let langkah = document.querySelector('.langkah-langkah');
+
+            // Menambahkan event listener pada judul-penjelasan
+            judulPenjelasan.addEventListener('click', function () {
+                // Jika langkah-langkah aktif, maka nonaktifkan (display:none)
+                if (langkah.style.display === 'block') {
+                    langkah.style.display = 'none';
+                } else {
+                    // Jika tidak aktif, maka aktifkan (display:block)
+                    langkah.style.display = 'block';
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

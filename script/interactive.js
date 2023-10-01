@@ -33,18 +33,3 @@ keyTypeSelect.addEventListener('input', function () {
         keyInput.setAttribute('type', 'number');
     }
 });
-
-
-// ! script untuk penjelasan setiap algoritma
-let judulPenjelasan = document.querySelector('.judul-penjelasan');
-let langkahLangkah = document.querySelector('.langkah-langkah');
-
-judulPenjelasan.addEventListener('click', function () {
-    // Jika langkah-langkah aktif, maka nonaktifkan (display:none)
-    if (langkahLangkah.style.display === 'block') {
-        langkahLangkah.style.display = 'none';
-    } else {
-        // Jika tidak aktif, maka aktifkan (display:block)
-        langkahLangkah.style.display = 'block';
-    }
-});

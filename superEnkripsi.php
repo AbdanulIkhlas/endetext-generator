@@ -77,10 +77,13 @@ include "allAlgorithmFunction.php";
             <form method="post" action="">
                 <div class="btn-group mb-4" role="group" aria-label="Basic radio toggle button group">
                     <input type="radio" class="btn-check" name="action" id="action1" autocomplete="off" value="enkripsi"
-                        checked>
+                        <?php echo (isset($_POST['action']) && $_POST['action'] === 'enkripsi') ? 'checked' : ''; ?>
+                        required>
                     <label class="btn btn-outline-secondary" for="action1">Enkripsi</label>
                     <input type="radio" class="btn-check" name="action" id="action2" autocomplete="off"
-                        value="deskripsi">
+                        value="deskripsi"
+                        <?php echo (isset($_POST['action']) && $_POST['action'] === 'deskripsi') ? 'checked' : ''; ?>
+                        required>
                     <label class="btn btn-outline-secondary" for="action2">Deskripsi</label>
                 </div>
                 <div class="mb-4">
@@ -108,11 +111,11 @@ include "allAlgorithmFunction.php";
                     <select id="key-type" name="key-type" required>
                         <!-- setelah submit, akan menampilkan yang dipilih sebelumnya -->
                         <option value="ascii-char"
-                            <?php echo ((isset($_POST['key-type'])) === 'ascii-char') ? 'selected' : ''; ?>>
+                            <?php echo (isset($_POST['key-type']) && $_POST['key-type'] === 'ascii-char') ? 'selected' : ''; ?>>
                             Karakter ASCII
                         </option>
                         <option value="ascii-decimal"
-                            <?php echo ((isset($_POST['key-type'])) === 'ascii-decimal') ? 'selected' : ''; ?>>
+                            <?php echo (isset($_POST['key-type']) && $_POST['key-type'] === 'ascii-decimal') ? 'selected' : ''; ?>>
                             Desimal ASCII
                         </option>
                     </select>
@@ -126,210 +129,287 @@ include "allAlgorithmFunction.php";
                 </div>
             </form>
             <?php 
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $text = $_POST["text"];
-                $keyCaesar = $_POST["key-caesar"];
-                $keyVignere = $_POST["key-vignere"];
-                $keyXor = $_POST["key-xor"];
-                $action = $_POST["action"];
-                $keyType = $_POST["key-type"];
-                if($action === "enkripsi"){
-                    $resultCaesar = caesarCipher($text, $keyCaesar, $action);
-                    $resultVignere = vigenereCipher($resultCaesar, $keyVignere, $action);
-                    $finalResult = xorCipher($resultVignere, $keyXor, $keyType);
-                    $finalResult = $finalResult;
-                }else if($action === "deskripsi"){
-                    $finalResult = xorCipher($text, $keyXor, $keyType);
-                    $resultVignere = vigenereCipher($finalResult, $keyVignere, $action);
-                    $resultCaesar = caesarCipher($resultVignere, $keyCaesar, $action);
-                    $finalResult = $resultCaesar;
-                }
-            }
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $text = $_POST["text"];
+            $keyCaesar = $_POST["key-caesar"];
+            $keyVignere = $_POST["key-vignere"];
+            $keyXor = $_POST["key-xor"];
+            $action = $_POST["action"];
+            $keyType = $_POST["key-type"];
+            if($action === "enkripsi"){
+                $resultCaesar = caesarCipher($text, $keyCaesar, $action);
+                $resultVignere = vigenereCipher($resultCaesar, $keyVignere, $action);
+                $ResultXor = xorCipher($resultVignere, $keyXor, $keyType);
+                $finalResult = $ResultXor;
             ?>
+            <div class="container">
+                <div class="proses-toggle">
+                    <div>Proses Algortima</div>
+                    <div class="icon-down">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black"
+                            class="bi bi-chevron-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="proses">
+                    <div class="all-proses">
+                        <div class="proses-caesar">
+                            <div class="judul-proses">
+                                <div>Proses Algoritma Caesar</div>
+                            </div>
+                            <div class="caesar-content isi-proses">
+                                <table>
+                                    <tr>
+                                        <td class="header-table">PTeks</td>
+                                        <td class="header-table"></td>
+                                        <td class="header-table">CTeks</td>
+                                    </tr>
+                                    <?php 
+                                for($i = 0; $i < strlen($text); $i++){
+                                    if($text[$i] != " "){
+                                ?>
+                                    <tr>
+                                        <td><?php echo $text[$i] ?></td>
+                                        <td> ---></td>
+                                        <td><?php echo $resultCaesar[$i] ?></td>
+                                    </tr>
+                                    <?php 
+                                    }
+                                }
+                                ?>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="proses-vignere">
+                            <div class="judul-proses">
+                                <div>Proses Algoritma Vignere</div>
+                            </div>
+                            <div class="vignere-content isi-proses">
+                                <table>
+                                    <tr>
+                                        <td class="header-table">PTeks</td>
+                                        <td class="header-table"></td>
+                                        <td class="header-table">key</td>
+                                        <td class="header-table"></td>
+                                        <td class="header-table"></td>
+                                        <td class="header-table">CTeks</td>
+                                    </tr>
+                                    <?php 
+                            $keyIndex = 0;
+                            $keyLength = strlen($keyVignere);
+                            for($i = 0; $i < strlen($resultCaesar); $i++){
+                                if($resultCaesar[$i] != " "){
+                            ?>
+                                    <tr>
+                                        <td><?php echo $resultCaesar[$i] ?></td>
+                                        <td> + </td>
+                                        <td><?php echo $keyVignere[$keyIndex] ?></td>
+                                        <td><?php echo "mod 26" ?></td>
+                                        <td> --></td>
+                                        <td><?php echo $resultVignere[$i] ?></td>
+                                    </tr>
+                                    <?php 
+                                    $keyIndex++;
+                                    if($keyIndex > $keyLength-1) $keyIndex = 0;
+                                }
+                            }
+                            ?>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="proses-xor">
+                            <div class="judul-proses">
+                                <div>Proses Algortima XOR</div>
+                            </div>
+                            <div class="isi-proses">
+                                <?php 
+                                // Konversi hasil ke biner
+                                $resultBinary = '';
+                                for ($j = 0; $j < strlen($finalResult); $j++) {
+                                    $resultBinary .= str_pad(decbin(ord($finalResult[$j])), 8, '0', STR_PAD_LEFT) . ' ';
+                                    // decbin() mengonversi kode ASCII tersebut ke dalam representasi biner
+                                    // str_pad(..., 8, '0', STR_PAD_LEFT) menambahkan nol pada awal biner jika panjang biner kurang dari 8 digit.
+                                }
+    
+                                for($i = 0; $i < strlen($resultVignere); $i++){
+                                    if($resultVignere[$i] != " "){
+                                ?>
+                                <table>
+                                    <tr>
+                                        <td><?php echo "Char " ?></td>
+                                        <td>:</td>
+                                        <td><?php echo $resultVignere[$i] ?></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><?php echo "ASCII     : " . ord($resultVignere[$i])  ?></td>
+                                        <td><?php echo "Biner     : " . decbin(ord($resultVignere[$i])) ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><?php echo "Key " ?></td>
+                                        <td>:</td>
+                                        <td><?php echo $keyXor ?></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><?php echo "ASCII     : " . ord($keyXor)  ?></td>
+                                        <td><?php echo "Biner     : " . decbin(ord($keyXor)) ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><?php echo "Result "?></td>
+                                        <td>:</td>
+                                        <td><?php echo $finalResult[$i] ?></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><?php echo "ASCII     : " . ord($finalResult[$i])  ?></td>
+                                        <td><?php echo "Biner     : " . decbin(ord($finalResult[$i])) ?></td>
+                                    </tr>
+                                </table>
+                                <?php 
+                                    }
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }else if($action === "deskripsi"){
+                $resultXor = xorCipher($text, $keyXor, $keyType);
+                $resultVignere = vigenereCipher($resultXor, $keyVignere, $action);
+                $resultCaesar = caesarCipher($resultVignere, $keyCaesar, $action);
+                $finalResult = $resultCaesar;
+            ?>
+                <div class="proses">
+                    <div class="all-proses">
+                        <div class="proses-xor">
+                            <div class="judul-proses">
+                                <div>Proses Algortima XOR</div>
+                            </div>
+                            <div class="isi-proses">
+                                <?php 
+                                // Konversi hasil ke biner
+                                $resultBinary = '';
+                                for ($j = 0; $j < strlen($resultXor); $j++) {
+                                    $resultBinary .= str_pad(decbin(ord($resultXor[$j])), 8, '0', STR_PAD_LEFT) . ' ';
+                                    // decbin() mengonversi kode ASCII tersebut ke dalam representasi biner
+                                    // str_pad(..., 8, '0', STR_PAD_LEFT) menambahkan nol pada awal biner jika panjang biner kurang dari 8 digit.
+                                }
+    
+                                for($i = 0; $i < strlen($text); $i++){
+                                    if($text[$i] != " "){
+                                ?>
+                                <table>
+                                    <tr>
+                                        <td><?php echo "Char " ?></td>
+                                        <td>:</td>
+                                        <td><?php echo $text[$i] ?></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><?php echo "ASCII     : " . ord($text[$i])  ?></td>
+                                        <td><?php echo "Biner     : " . decbin(ord($text[$i])) ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><?php echo "Key " ?></td>
+                                        <td>:</td>
+                                        <td><?php echo $keyXor ?></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><?php echo "ASCII     : " . ord($keyXor)  ?></td>
+                                        <td><?php echo "Biner     : " . decbin(ord($keyXor)) ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><?php echo "Result "?></td>
+                                        <td>:</td>
+                                        <td><?php echo $resultXor[$i] ?></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><?php echo "ASCII     : " . ord($resultXor[$i])  ?></td>
+                                        <td><?php echo "Biner     : " . decbin(ord($resultXor[$i])) ?></td>
+                                    </tr>
+                                </table>
+                                <?php 
+                                    }
+                                }
+                                ?>
+                            </div>
+                        </div>
+                        <div class="proses-vignere">
+                            <div class="judul-proses">
+                                <div>Proses Algoritma Vignere</div>
+                            </div>
+                            <div class="vignere-content isi-proses">
+                                <table>
+                                    <tr>
+                                        <td class="header-table">CTeks</td>
+                                        <td class="header-table"></td>
+                                        <td class="header-table">key</td>
+                                        <td class="header-table"></td>
+                                        <td class="header-table"></td>
+                                        <td class="header-table">PTeks</td>
+                                    </tr>
+                                    <?php 
+                            $keyIndex = 0;
+                            $keyLength = strlen($keyVignere);
+                            for($i = 0; $i < strlen($resultXor); $i++){
+                                if($resultXor[$i] != " "){
+                            ?>
+                                    <tr>
+                                        <td><?php echo $resultXor[$i] ?></td>
+                                        <td> + </td>
+                                        <td><?php echo $keyVignere[$keyIndex] ?></td>
+                                        <td><?php echo "mod 26" ?></td>
+                                        <td> --></td>
+                                        <td><?php echo $resultVignere[$i] ?></td>
+                                    </tr>
+                                    <?php 
+                                    $keyIndex++;
+                                    if($keyIndex > $keyLength-1) $keyIndex = 0;
+                                }
+                            }
+                            ?>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="proses-caesar">
+                            <div class="judul-proses">
+                                <div>Proses Algoritma Caesar</div>
+                            </div>
+                            <div class="caesar-content isi-proses">
+                                <table>
+                                    <tr>
+                                        <td class="header-table">CTeks</td>
+                                        <td class="header-table"></td>
+                                        <td class="header-table">PTeks</td>
+                                    </tr>
+                                    <?php 
+                                for($i = 0; $i < strlen($resultVignere); $i++){
+                                    if($resultVignere[$i] != " "){
+                                ?>
+                                    <tr>
+                                        <td><?php echo $resultVignere[$i] ?></td>
+                                        <td> ---></td>
+                                        <td><?php echo $finalResult[$i] ?></td>
+                                    </tr>
+                                    <?php 
+                                    }
+                                }
+                                ?>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <?php
+            }
+        }
+        ?>
+            </div>
+
             <?php 
             if (isset($_POST['text'])){
             ?>
-            <div class="proses mb-2">
-                <div class="proses-caesar">
-                    <div class="judul-proses">
-                        <div>Proses Algoritma Caesar</div>
-                        <div class="icon-down">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black"
-                                class="bi bi-chevron-down" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="isi-proses">
-                        <?php 
-                        // Konversi hasil ke biner
-                        $resultBinary = '';
-                        for ($j = 0; $j < strlen($finalResult); $j++) {
-                            $resultBinary .= str_pad(decbin(ord($finalResult[$j])), 8, '0', STR_PAD_LEFT) . ' ';
-                            // decbin() mengonversi kode ASCII tersebut ke dalam representasi biner
-                            // str_pad(..., 8, '0', STR_PAD_LEFT) menambahkan nol pada awal biner jika panjang biner kurang dari 8 digit.
-                        }
-                        for($i = 0; $i < strlen($resultVignere); $i++){
-                            if($text[$i] != " "){
-                        ?>
-                        <table>
-                            <tr>
-                                <td><?php echo "Character " ?></td>
-                                <td>:</td>
-                                <td><?php echo $resultVignere[$i] ?></td>
-                                <td></td>
-                                <td></td>
-                                <td><?php echo "ASCII     : " . ord($resultVignere[$i])  ?></td>
-                                <td><?php echo "Biner     : " . decbin(ord($resultVignere[$i])) ?></td>
-                            </tr>
-                            <tr>
-                                <td><?php echo "Key " ?></td>
-                                <td>:</td>
-                                <td><?php echo $keyXor ?></td>
-                                <td></td>
-                                <td></td>
-                                <td><?php echo "ASCII     : " . ord($keyXor)  ?></td>
-                                <td><?php echo "Biner     : " . decbin(ord($keyXor)) ?></td>
-                            </tr>
-                            <tr>
-                                <td><?php echo "Result "?></td>
-                                <td>:</td>
-                                <td><?php echo $finalResult[$i] ?></td>
-                                <td></td>
-                                <td></td>
-                                <td><?php echo "ASCII     : " . ord($finalResult[$i])  ?></td>
-                                <td><?php echo "Biner     : " . decbin(ord($finalResult[$i])) ?></td>
-                            </tr>
-                            <br>
-                        </table>
-                        <?php 
-                            }
-                        }
-                        ?>
-                    </div>
-                </div>
-                <div class="proses-vignere">
-                    <div class="judul-proses">
-                        <div>Proses</div>
-                        <div class="icon-down">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black"
-                                class="bi bi-chevron-down" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="isi-proses">
-                        <?php 
-                        // Konversi hasil ke biner
-                        $resultBinary = '';
-                        for ($j = 0; $j < strlen($finalResult); $j++) {
-                            $resultBinary .= str_pad(decbin(ord($finalResult[$j])), 8, '0', STR_PAD_LEFT) . ' ';
-                            // decbin() mengonversi kode ASCII tersebut ke dalam representasi biner
-                            // str_pad(..., 8, '0', STR_PAD_LEFT) menambahkan nol pada awal biner jika panjang biner kurang dari 8 digit.
-                        }
-
-                        for($i = 0; $i < strlen($resultVignere); $i++){
-                            if($text[$i] != " "){
-                        ?>
-                        <table>
-                            <tr>
-                                <td><?php echo "Character " ?></td>
-                                <td>:</td>
-                                <td><?php echo $resultVignere[$i] ?></td>
-                                <td></td>
-                                <td></td>
-                                <td><?php echo "ASCII     : " . ord($resultVignere[$i])  ?></td>
-                                <td><?php echo "Biner     : " . decbin(ord($resultVignere[$i])) ?></td>
-                            </tr>
-                            <tr>
-                                <td><?php echo "Key " ?></td>
-                                <td>:</td>
-                                <td><?php echo $keyXor ?></td>
-                                <td></td>
-                                <td></td>
-                                <td><?php echo "ASCII     : " . ord($keyXor)  ?></td>
-                                <td><?php echo "Biner     : " . decbin(ord($keyXor)) ?></td>
-                            </tr>
-                            <tr>
-                                <td><?php echo "Result "?></td>
-                                <td>:</td>
-                                <td><?php echo $finalResult[$i] ?></td>
-                                <td></td>
-                                <td></td>
-                                <td><?php echo "ASCII     : " . ord($finalResult[$i])  ?></td>
-                                <td><?php echo "Biner     : " . decbin(ord($finalResult[$i])) ?></td>
-                            </tr>
-                            <br>
-                        </table>
-                        <?php 
-                            }
-                        }
-                        ?>
-                    </div>
-                </div>
-                <div class="proses-xor">
-                    <div class="judul-proses">
-                        <div>Proses</div>
-                        <div class="icon-down">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black"
-                                class="bi bi-chevron-down" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="isi-proses">
-                        <?php 
-                        // Konversi hasil ke biner
-                        $resultBinary = '';
-                        for ($j = 0; $j < strlen($finalResult); $j++) {
-                            $resultBinary .= str_pad(decbin(ord($finalResult[$j])), 8, '0', STR_PAD_LEFT) . ' ';
-                            // decbin() mengonversi kode ASCII tersebut ke dalam representasi biner
-                            // str_pad(..., 8, '0', STR_PAD_LEFT) menambahkan nol pada awal biner jika panjang biner kurang dari 8 digit.
-                        }
-
-                        for($i = 0; $i < strlen($resultVignere); $i++){
-                            if($text[$i] != " "){
-                        ?>
-                        <table>
-                            <tr>
-                                <td><?php echo "Character " ?></td>
-                                <td>:</td>
-                                <td><?php echo $resultVignere[$i] ?></td>
-                                <td></td>
-                                <td></td>
-                                <td><?php echo "ASCII     : " . ord($resultVignere[$i])  ?></td>
-                                <td><?php echo "Biner     : " . decbin(ord($resultVignere[$i])) ?></td>
-                            </tr>
-                            <tr>
-                                <td><?php echo "Key " ?></td>
-                                <td>:</td>
-                                <td><?php echo $keyXor ?></td>
-                                <td></td>
-                                <td></td>
-                                <td><?php echo "ASCII     : " . ord($keyXor)  ?></td>
-                                <td><?php echo "Biner     : " . decbin(ord($keyXor)) ?></td>
-                            </tr>
-                            <tr>
-                                <td><?php echo "Result "?></td>
-                                <td>:</td>
-                                <td><?php echo $finalResult[$i] ?></td>
-                                <td></td>
-                                <td></td>
-                                <td><?php echo "ASCII     : " . ord($finalResult[$i])  ?></td>
-                                <td><?php echo "Biner     : " . decbin(ord($finalResult[$i])) ?></td>
-                            </tr>
-                            <br>
-                        </table>
-                        <?php 
-                            }
-                        }
-                        ?>
-                    </div>
-                </div>
-            </div>
             <?php }  ?>
             <div class="mb-4">
                 <label for="hasil" class="form-label">Hasil : </label>
@@ -361,6 +441,7 @@ include "allAlgorithmFunction.php";
         </div>
     </footer>
     <script src="script/interactive.js"></script>
+    <script src="script/superEnkripsi.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Mengambil elemen judul-penjelasan

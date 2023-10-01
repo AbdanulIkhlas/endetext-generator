@@ -266,6 +266,7 @@ main .content form button {
     margin-inline: auto;
     width: 25vw;
     padding: 10px;
+    font-size: 14pt;
     background-color: greenyellow;
     border: 1px solid rgb(180, 180, 180);
     border-radius: 8px;
@@ -309,7 +310,7 @@ main .content .proses {
 
 .judul-proses {
     font-family: 'Martian Mono', monospace;
-    font-size: 18px;
+    font-size: 12pt;
     font-weight: 500;
     display: flex;
     justify-content: space-between;

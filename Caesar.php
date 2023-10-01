@@ -2,22 +2,23 @@
 <html lang="en">
 
 <?php 
+
 // ALGORITMA CAESAR CHIPPER
-function caesarCipher($text, $shift, $action) {
+function caesarCipher($text, $key, $action) {
     $result = "";
-    $shift = ($action == 'enkripsi') ? $shift : -$shift;
-    // jika action=decrypt, $shift akan menjadi negatif agar proses dekripsi berfungsi dengan benar
-    // shift=key(kunci)
+    $key = ($action == 'enkripsi') ? $key : -$key;
+    // jika action=decrypt, $key akan menjadi negatif agar proses dekripsi berfungsi dengan benar
+    // key=key(kunci)
     for ($i = 0; $i < strlen($text); $i++) {
         $char = $text[$i];
         if (ctype_alpha($char)) { // jika huruf alfabet 
             $isUpperCase = ctype_upper($char); // huruf besar atau kecil
             $char = strtolower($char); // diubah ke huruf kecil
             // RUMUS C = (P+K) mod 26 ; P = (C-K) mod 26 
-            $char = chr(((ord($char) - 97 + $shift + 26) % 26) + 97);
+            $char = chr(((ord($char) - 97 + $key + 26) % 26) + 97);
             // ord=mengambil kode ASCII dari karakter 
             // dikurang 97 untuk memudahkan perhitungan (97=kode ASCII huruf a)
-            // tambahkan dengan shift atau kunci dan tambahkan 26 dan operasi modulo (%26) untuk memastikan hasil dalam rentang 0-25
+            // tambahkan dengan key atau kunci dan tambahkan 26 dan operasi modulo (%26) untuk memastikan hasil dalam rentang 0-25
             // ditambah 97 untuk mengembalikan dalam kode ASCII
             if ($isUpperCase) {
                 $char = strtoupper($char);// jika aslinya huruf besar dikembalikan
@@ -25,7 +26,6 @@ function caesarCipher($text, $shift, $action) {
         } else {
             $char = $text[$i]; // Jaga karakter non-alphabet seperti spasi atau tanda baca
         }
-
         $result .= $char; //gabungkan karakter
     }
 
@@ -86,30 +86,57 @@ function caesarCipher($text, $shift, $action) {
                         required><?php if (isset($_POST['textInput'])) echo htmlspecialchars($_POST['textInput']); ?></textarea>
                 </div>
                 <div class="input-group mb-4">
-
-                    <span class="input-group-text" id="basic-addon1">Key / Shift</span>
-                    <input type="number" name="shift" class="form-control" aria-label="Username"
+                    <span class="input-group-text" id="basic-addon1">Key / shift</span>
+                    <input type="number" name="key" class="form-control" aria-label="Username"
                         aria-describedby="basic-addon1" min="1" max="25"
-                        value="<?php if (isset($_POST['shift'])) echo htmlspecialchars($_POST['shift']); ?>" required>
+                        value="<?php if (isset($_POST['key'])) echo htmlspecialchars($_POST['key']); ?>" required>
                 </div>
                 <div align="center" class="mb-3">
                     <button type="submit">Enkripsi</button>
                 </div>
             </form>
-
+            <?php 
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $textInput = $_POST["textInput"];
+                $key = $_POST["key"];
+                $action = $_POST["action"];
+                $result = caesarCipher($textInput, $key, $action);
+                
+            }
+            ?>
+            <?php 
+            if (isset($_POST['textInput'])){
+            ?>
+            <div align="center" class="mb-2">
+                <div class="proses">
+                    <div class="judul-proses">
+                        <div>Proses</div>
+                        <div class="icon-down">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black"
+                                class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="isi-proses">
+                        <?php 
+                        for($i = 0; $i < strlen($textInput); $i++){
+                            if($textInput[$i] != " "){
+                                echo $textInput[$i]."  -----------------------------------> ".$result[$i]."<br>";
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <?php }  ?>
             <div class="mb-4">
                 <label for="hasil" class="form-label">Hasil : </label>
                 <div class="hasil">
                     <?php 
-                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                        $textInput = $_POST["textInput"];
-                        $shift = $_POST["shift"];
-                        $action = $_POST["action"];
-                        $result = caesarCipher($textInput, $shift, $action);
-
-                        echo $result;
+                        if (isset($_POST['textInput'])) echo $result;
                     ?>
-                    <?php } ?>
                 </div>
             </div>
         </section>
@@ -133,7 +160,7 @@ function caesarCipher($text, $shift, $action) {
             </table>
         </div>
     </footer>
-    <!-- <script src="script/index.js"></script> -->
+    <script src="script/interactive.js"></script>
 </body>
 
 </html>

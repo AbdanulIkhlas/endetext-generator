@@ -54,7 +54,7 @@
                         sejumlah tetap yang ditentukan. Teknik ini dinamai sesuai dengan Julius Caesar, seorang jenderal
                         Romawi kuno, yang dikatakan menggunakannya untuk mengamankan komunikasi militer.
                     </div>
-                    <button><a href="caesar.php">Caesar Chipper</a></button>
+                    <button><a href="testing/caesar.php">Caesar Chipper</a></button>
                 </div>
             </div>
             <br><br>
@@ -127,7 +127,7 @@
                         Caesar sehingga menghasilkan
                         Plaintext yang bisa di baca semua orang.
                     </div>
-                    <button><a href="superEnkripsi.php">Super Enkripsi</a></button>
+                    <button><a href="testing/superEnkripsi.php">Super Enkripsi</a></button>
                 </div>
             </div>
         </section>

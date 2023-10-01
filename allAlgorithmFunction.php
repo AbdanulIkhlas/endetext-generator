@@ -69,18 +69,18 @@ function vigenereCipher($text, $key, $action) {
 
 
 //  Algoritma XOR
-function xorCipher($text) {
+function xorCipher($text, $key) {
     $result = '';
     $resultb = '';
     for ($i = 0; $i < strlen($text); $i++) {
         $char = $text[$i];
-        $keyChar = '';
+        $keyChar = $key;
         
         // Memilih jenis kunci berdasarkan pilihan pengguna
         if ($_POST["key-type"] === "ascii-char") {
-            $keyChar = $_POST["key-char"];
+            $keyChar = $key;
         } elseif ($_POST["key-type"] === "ascii-decimal") {
-            $keyChar = chr($_POST["key-decimal"]);
+            $keyChar = chr($key);
         }
 
         // RUMUS C = P XOR K ; P = C XOR K
@@ -88,23 +88,8 @@ function xorCipher($text) {
         // operasi XOR dalam bentuk ASCII dan diubah kembali menjadi karakter
         
         $result .= $resultChar;
-
-        // Konversi hasil ke biner
-        $resultBinary = '';
-        for ($j = 0; $j < strlen($resultChar); $j++) {
-            $resultBinary .= str_pad(decbin(ord($resultChar[$j])), 8, '0', STR_PAD_LEFT) . ' ';
-            // decbin() mengonversi kode ASCII tersebut ke dalam representasi biner
-            // str_pad(..., 8, '0', STR_PAD_LEFT) menambahkan nol pada awal biner jika panjang biner kurang dari 8 digit.
-        }
-        
-        // semua hasil biner
-        $resultb .= $resultBinary;
-        returnResultBinary($resultb);
     }
     return $result;
 }
 
-function returnResultBinary($result){
-    return $result;
-}
 ?>

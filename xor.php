@@ -31,29 +31,44 @@ include "allAlgorithmFunction.php";
     </header>
     <main>
         <section>
-            <p>
-                <span class="important-text">Algoritma XOR</span>
-                <br><br>
-                Melakukan enkripsi atau deskripsi pesan dengan menggunakan operasi XOR (Xclusive OR).
-                <br><br>
-                <span class="langkah-langkah">
-                    Langkah-langkah : <br>
-                    1. Memilih terlebih dahulu apakah akan melakukan enkripsi atau desripsi <br>
-                    2. Input pesan yang ingin di eksekusi <br>
-                    3. Input key / shift<br>
-                    &nbsp;&nbsp;&nbsp; - Untuk Karakter ASCII disarankan input antara (<span
-                        class="important-text">!</span>
-                    sampai dengan
-                    <span class="important-text">_</span>) <br>
-                    &nbsp;&nbsp;&nbsp; - Untuk Desimal ASCII disarankan input antara (<span
-                        class="important-text">0</span>
-                    sampai dengan
-                    <span class="important-text">95</span>) <br>
-                    Berikut adalah tabel ASCII <br>
-                    <span class="ascii-image"><img src="image/ascii.png" alt=""></span> <br>
-                    4. Tekan tombol proses untuk melihat hasilnya
-                </span>
-            </p>
+            <div class="penjelasan">
+                <div class="judul-penjelasan">
+                    <div>
+                        <p class="important-text">Algoritma XOR</p>
+                        <p>
+                            Melakukan enkripsi atau deskripsi pesan dengan menggunakan operasi XOR (Xclusive OR).
+                        </p>
+                    </div>
+                    <div class="icon-down">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black"
+                            class="bi bi-chevron-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="langkah-langkah">
+                    <p>Langkah-langkah : </p>
+                    <p>1. Memilih terlebih dahulu apakah akan melakukan enkripsi atau desripsi</p>
+                    <p>2. Input pesan yang ingin di eksekusi</p>
+                    <p>3. Input key / shift</p>
+                    <p>
+                        &nbsp;&nbsp;&nbsp; - Untuk Karakter ASCII disarankan input antara (<span
+                            class="important-text">!</span>
+                        sampai dengan
+                        <span class="important-text">_</span>)
+                    </p>
+                    <p>
+                        &nbsp;&nbsp;&nbsp; - Untuk Desimal ASCII disarankan input antara (<span
+                            class="important-text">0</span>
+                        sampai dengan
+                        <span class="important-text">95</span>)
+                    </p>
+                    <p>Berikut adalah tabel ASCII </p>
+                    <span class="ascii-image"><img src="image/ascii.png" alt=""></span>
+                    <p>4. Tekan tombol proses untuk melihat hasilnya</p>
+                </div>
+            </div>
         </section>
         <section class="content">
             <form method="post" action="">
@@ -72,9 +87,20 @@ include "allAlgorithmFunction.php";
                 </div>
                 <div class="input-group mb-4">
                     <span class="input-group-text" id="basic-addon1">Key / Shift</span>
-                    <input type="text" name="key" class="form-control" aria-label="Username"
-                        aria-describedby="basic-addon1" pattern="[A-Za-z]+" title="Mohon input key dengan Alfabet"
-                        required value="<?php if (isset($_POST['key'])) echo htmlspecialchars($_POST['key']); ?>"
+                    <select id="key-type" name="key-type" required>
+                        <!-- setelah submit, akan menampilkan yang dipilih sebelumnya -->
+                        <option value="ascii-char"
+                            <?php echo ($_POST['key-type'] === 'ascii-char') ? 'selected' : ''; ?>>
+                            Karakter ASCII
+                        </option>
+                        <option value="ascii-decimal"
+                            <?php echo ($_POST['key-type'] === 'ascii-decimal') ? 'selected' : ''; ?>>
+                            Desimal ASCII
+                        </option>
+                    </select>
+                    <input type="text" id="key-input" name="key" class="form-control" aria-label="Username"
+                        aria-describedby="basic-addon1" required
+                        value="<?php if (isset($_POST['key'])) echo htmlspecialchars($_POST['key']); ?>" maxlength="1"
                         required>
                 </div>
                 <div align="center" class="mb-3">
@@ -85,9 +111,9 @@ include "allAlgorithmFunction.php";
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $text = $_POST["text"];
                 $key = $_POST["key"];
-                $key = preg_replace("/[^a-zA-Z]/", "", $key);
                 $action = $_POST["action"];
-                $result = vigenereCipher($text, $key, $action);
+                $keyType = $_POST["key-type"];
+                $result = xorCipher($text, $key, $keyType);
             }
             ?>
             <?php 
@@ -107,13 +133,48 @@ include "allAlgorithmFunction.php";
                     </div>
                     <div class="isi-proses">
                         <?php 
-                        $keyIndex = 0;
-                        $keyLength = strlen($key);
+                        // Konversi hasil ke biner
+                        $resultBinary = '';
+                        for ($j = 0; $j < strlen($result); $j++) {
+                            $resultBinary .= str_pad(decbin(ord($result[$j])), 8, '0', STR_PAD_LEFT) . ' ';
+                            // decbin() mengonversi kode ASCII tersebut ke dalam representasi biner
+                            // str_pad(..., 8, '0', STR_PAD_LEFT) menambahkan nol pada awal biner jika panjang biner kurang dari 8 digit.
+                        }
+
                         for($i = 0; $i < strlen($text); $i++){
                             if($text[$i] != " "){
-                                echo $text[$i]." + ".$key[$keyIndex]. " mod 26 " ."  ---------------------> ".$result[$i]."<br>";
-                                $keyIndex++;
-                                if($keyIndex > $keyLength-1) $keyIndex = 0;
+                        ?>
+                        <table>
+                            <tr>
+                                <td><?php echo "Character " ?></td>
+                                <td>:</td>
+                                <td><?php echo $text[$i] ?></td>
+                                <td></td>
+                                <td></td>
+                                <td><?php echo "ASCII     : " . ord($text[$i])  ?></td>
+                                <td><?php echo "Biner     : " . decbin(ord($text[$i])) ?></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo "Key " ?></td>
+                                <td>:</td>
+                                <td><?php echo $key ?></td>
+                                <td></td>
+                                <td></td>
+                                <td><?php echo "ASCII     : " . ord($key)  ?></td>
+                                <td><?php echo "Biner     : " . decbin(ord($key)) ?></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo "Result "?></td>
+                                <td>:</td>
+                                <td><?php echo $result[$i] ?></td>
+                                <td></td>
+                                <td></td>
+                                <td><?php echo "ASCII     : " . ord($result[$i])  ?></td>
+                                <td><?php echo "Biner     : " . decbin(ord($result[$i])) ?></td>
+                            </tr>
+                            <br>
+                        </table>
+                        <?php 
                             }
                         }
                         ?>

@@ -122,7 +122,7 @@ include "allAlgorithmFunction.php";
                     <input type="text" id="key-input" name="key-xor" class="form-control" aria-label="Username"
                         aria-describedby="basic-addon1" required
                         value="<?php if (isset($_POST['key-xor'])) echo htmlspecialchars($_POST['key-xor']); ?>"
-                        maxlength="1" required>
+                        maxlength="3" required>
                 </div>
                 <div align="center" class="mb-3">
                     <button type="submit">Proses</button>

@@ -103,7 +103,7 @@ include "allAlgorithmFunction.php";
                     </select>
                     <input type="text" id="key-input" name="key" class="form-control" aria-label="Username"
                         aria-describedby="basic-addon1" required
-                        value="<?php if (isset($_POST['key'])) echo htmlspecialchars($_POST['key']); ?>" maxlength="1"
+                        value="<?php if (isset($_POST['key'])) echo htmlspecialchars($_POST['key']); ?>" maxlength="3"
                         required>
                 </div>
                 <div align="center" class="mb-3">

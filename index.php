@@ -51,7 +51,8 @@
                     <div>
                         Caesar Cipher, juga dikenal sebagai Caesar Shift atau Shift Cipher, adalah jenis enkripsi
                         sederhana yang digunakan untuk mengenkripsi pesan dengan menggeser setiap huruf dalam teks asli
-                        sejumlah tetap yang ditentukan. Teknik ini dinamai sesuai dengan Julius Caesar, seorang jenderal
+                        sejumlah tetap yang ditentukan. Teknik ini dinamai sesuai dengan penemunya Julius Caesar,
+                        seorang jenderal
                         Romawi kuno, yang dikatakan menggunakannya untuk mengamankan komunikasi militer.
                     </div>
                     <button><a href="caesar.php">Caesar Chipper</a></button>
@@ -120,8 +121,8 @@
                         Chipper, Vignere, dan XOR. Dimana untuk enkripsi,
                         pesan plaintext akan di enkripsi terlebih dahulu menggunakan Caesar, kemudian di enkripsi
                         menggunakan alogritma Vignere, dan
-                        terakhir akan di enkripsi menjadi biner menggunakan algoritma XOR.
-                        Kemudian untuk deskripsi yakni kebalikan nya, dimana pesan Chippertext yang berupa biner akan di
+                        terakhir akan di enkripsi menggunakan algoritma XOR.
+                        Kemudian untuk deskripsi yakni kebalikan nya, dimana pesan Chippertext akan di
                         deskripsi menggunakan XOR, kemudian
                         di deskripsi lagi menggunakan algoritma Vignere dan terakhir di deskripri menggunakan Algoritma
                         Caesar sehingga menghasilkan

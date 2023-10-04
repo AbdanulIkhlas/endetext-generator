@@ -79,7 +79,7 @@ include "allAlgorithmFunction.php";
                 <div class="input-group mb-4">
                     <span class="input-group-text" id="basic-addon1">Key / shift</span>
                     <input type="number" name="key" class="form-control" aria-label="Username"
-                        aria-describedby="basic-addon1" min="1" max="25"
+                        aria-describedby="basic-addon1" min="1"
                         value="<?php if (isset($_POST['key'])) echo htmlspecialchars($_POST['key']); ?>" required>
                 </div>
                 <div align="center" class="mb-3">

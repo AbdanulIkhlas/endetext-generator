@@ -2,16 +2,23 @@
 // Algortima caesar chipper
 function caesarCipher($text, $key, $action) {
     $result = "";
+    if($key>26){
+        $key %= 26;
+    }
+    // jika key lebih dari 26 maka di mod 26
     $key = ($action == 'enkripsi') ? $key : -$key;
     // jika action=decrypt, $key akan menjadi negatif agar proses dekripsi berfungsi dengan benar
     // key=key(kunci)
+    
     for ($i = 0; $i < strlen($text); $i++) {
         $char = $text[$i];
         if (ctype_alpha($char)) { // jika huruf alfabet 
             $isUpperCase = ctype_upper($char); // huruf besar atau kecil
             $char = strtolower($char); // diubah ke huruf kecil
             // RUMUS C = (P+K) mod 26 ; P = (C-K) mod 26 
-            $char = chr(((ord($char) - 97 + $key + 26) % 26) + 97);
+
+            $char = chr(((ord($char) - 97 + ($key) + 26) % 26) + 97);
+            echo $key;
             // ord=mengambil kode ASCII dari karakter 
             // dikurang 97 untuk memudahkan perhitungan (97=kode ASCII huruf a)
             // tambahkan dengan key atau kunci dan tambahkan 26 dan operasi modulo (%26) untuk memastikan hasil dalam rentang 0-25

@@ -18,7 +18,6 @@ function caesarCipher($text, $key, $action) {
             // RUMUS C = (P+K) mod 26 ; P = (C-K) mod 26 
 
             $char = chr(((ord($char) - 97 + ($key) + 26) % 26) + 97);
-            echo $key;
             // ord=mengambil kode ASCII dari karakter 
             // dikurang 97 untuk memudahkan perhitungan (97=kode ASCII huruf a)
             // tambahkan dengan key atau kunci dan tambahkan 26 dan operasi modulo (%26) untuk memastikan hasil dalam rentang 0-25
